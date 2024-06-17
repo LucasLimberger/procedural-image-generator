@@ -1,0 +1,21 @@
+.tilesetSelector {
+  background-color: var(--dark-neutral-color);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding-left: 1rem;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    background-color: var(--light-neutral-color);
+    position: absolute;
+    right: 0;
+    width: 0.5rem;
+    height: 100%;
+  }
+}

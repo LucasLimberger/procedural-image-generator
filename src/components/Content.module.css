@@ -1,0 +1,26 @@
+/* .header {
+  background-color: var(--neutral);
+} */
+
+.main {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 3rem 1fr;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+
+  background-color: var(--neutral-color);
+  border-bottom: 1px solid var(--light-neutral-color);
+}
+
+.section {
+  background-color: var(--dark-neutral-color);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 6rem 1fr;
+}

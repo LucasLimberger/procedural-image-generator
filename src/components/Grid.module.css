@@ -1,0 +1,21 @@
+.gridWrapper {
+  background-color: var(--neutral-darker);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+
+  --padding-inline: 1rem;
+  --padding-block: 1rem;
+  --tile-size: min(
+    calc((100cqw - 2 * var(--padding-inline)) / var(--columns)),
+    ((100cqh - 2 * var(--padding-block)) / var(--rows))
+  );
+  grid-template-rows: repeat(var(--rows), var(--tile-size));
+  grid-template-columns: repeat(var(--columns), var(--tile-size));
+}

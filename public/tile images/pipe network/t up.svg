@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<linearGradient id="linearGradient1">
+			<stop stop-color="#080808" offset="0"/>
+			<stop stop-color="#292929" offset="1"/>
+		</linearGradient>
+		<mask id="mask1" maskUnits="userSpaceOnUse">
+			<path d="m16-1v19a8 4.5 0 0 0 8 4 8 4.5 0 0 0 8-4v-19z" fill="#fff"/>
+		</mask>
+		<mask id="mask2" maskUnits="userSpaceOnUse">
+			<path d="m14 13h2v3.75h16v-3.75h2v10h-20z" fill="#fff"/>
+		</mask>
+	</defs>
+	<rect x="-1" y="-1" width="50" height="50" fill="#2d3646"/>
+	<rect x="-1" y="29" width="50" height="3" fill="#212121"/>
+	<rect x="-1" y="23" width="50" height="7" fill="#2e2e2e"/>
+	<rect x="-1" y="19" width="50" height="5" fill="#383838"/>
+	<rect x="-1" y="16" width="50" height="4" fill="#4d4d4d"/>
+	<rect x="-1" y="17" width="50" height="1" fill="#666"/>
+	<g mask="url(#mask1)">
+		<g>
+			<rect x="15" y="-1" width="3" height="23" fill="#141414"/>
+			<rect x="17" y="-1" width="3" height="23" fill="#212121"/>
+			<rect x="19" y="-1" width="8" height="23" fill="#2e2e2e"/>
+		</g>
+		<rect x="26" y="-1" width="4" height="23" fill="#383838"/>
+		<rect x="29" y="-1" width="2.9" height="23" fill="#4d4d4d"/>
+		<rect x="31" y="-1" width="2" height="23" fill="#666"/>
+	</g>
+	<path d="m32.5 16.5c0.5 7-17.5 7-17 0 0-4 17-4 17 0" fill="none" mask="url(#mask2)" stroke="url(#linearGradient1)" stroke-linecap="round" stroke-width="1.021"/>
+</svg>
