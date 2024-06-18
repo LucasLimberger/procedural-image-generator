@@ -1,5 +1,5 @@
 .tilesetSelector {
-  background-color: var(--dark-neutral-color);
+  background-color: var(--neutral-clr);
 
   position: relative;
   display: flex;
@@ -9,13 +9,4 @@
   gap: 1.5rem;
   padding-left: 1rem;
   overflow: hidden;
-
-  &::after {
-    content: "";
-    background-color: var(--light-neutral-color);
-    position: absolute;
-    right: 0;
-    width: 0.5rem;
-    height: 100%;
-  }
 }

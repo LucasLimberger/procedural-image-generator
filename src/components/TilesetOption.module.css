@@ -5,16 +5,17 @@
   padding: 0.5rem;
 
   border: none;
-  background-color: var(--neutral-color);
+  background-color: var(--neutral-clr);
   translate: 1rem;
   transition: background-color 200ms linear, translate 200ms ease;
+  outline: var(--dark-neutral-clr) solid 0.25rem;
 
   &:hover,
   &:focus-visible {
-    outline: var(--selection-color) solid 0.25rem;
+    outline-color: var(--selection-clr);
   }
   &.selectedTileset {
-    background-color: var(--light-neutral-color);
+    background-color: var(--dark-neutral-clr);
     translate: 0;
   }
 }

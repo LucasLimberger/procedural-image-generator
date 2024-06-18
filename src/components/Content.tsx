@@ -81,7 +81,6 @@ export default function Content() {
             type="range"
             min={2}
             max={30}
-            value={settings.gridWidth}
             onChange={e => handleWidthChange(parseInt(e.target.value))}
           />
           <input
@@ -89,11 +88,10 @@ export default function Content() {
             type="range"
             min={2}
             max={30}
-            value={settings.gridHeight}
             onChange={e => handleHeightChange(parseInt(e.target.value))}
           />
         </div>
-        <div className={styles.section}>
+        <section className={styles.section}>
           <TilesetSelector
             currentTileset={settings.activeTileset}
             onSelect={handleTilesetChange}
@@ -108,7 +106,7 @@ export default function Content() {
           ) : (
             <PauseOverlay onDismiss={() => setRunning(true)} />
           )}
-        </div>
+        </section>
       </main>
     </>
   );

@@ -1,7 +1,7 @@
 .checkbox {
-  color: var(--text-color);
+  color: var(--text-clr);
 }
 
 .label {
-  color: var(--text-color);
+  color: var(--text-clr);
 }

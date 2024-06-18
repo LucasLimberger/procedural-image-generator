@@ -1,7 +1,3 @@
-/* .header {
-  background-color: var(--neutral);
-} */
-
 .main {
   height: 100%;
   display: grid;
@@ -9,18 +5,20 @@
 }
 
 .controls {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 
-  background-color: var(--neutral-color);
-  border-bottom: 1px solid var(--light-neutral-color);
+  background-color: var(--neutral-clr);
+  border-bottom: 1px solid var(--light-neutral-clr);
 }
 
 .section {
-  background-color: var(--dark-neutral-color);
+  background-color: var(--dark-neutral-clr);
+  width: auto;
   display: grid;
-  gap: 2rem;
+  gap: 1rem;
   grid-template-columns: 6rem 1fr;
 }
