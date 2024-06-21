@@ -6,7 +6,7 @@ import { useId } from "react";
 interface ToggleProps {
   name: string;
   content: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: boolean) => void;
 }
 
 export default function Toggle({ name, content, onChange }: ToggleProps) {
@@ -18,7 +18,7 @@ export default function Toggle({ name, content, onChange }: ToggleProps) {
         id={id}
         name={name}
         value={content}
-        onChange={onChange}
+        onChange={e => onChange(e.target.checked)}
         className={styles.checkbox}
       />
       <label htmlFor={id} className={styles.label}>

@@ -8,6 +8,7 @@ import PauseOverlay from "./PauseOverlay";
 import WaveFunctionCollapseGrid from "../scripts/WaveFunctionCollapseGrid";
 import { TILESETS, TilesetName, TileName } from "../scripts/tileData";
 import Toggle from "./Toggle";
+import LabeledInput from "./LabeledInput";
 
 export default function Content() {
   const [running, setRunning] = useState(false);
@@ -43,26 +44,31 @@ export default function Content() {
   //   }
   // }, [running, wfcg]);
 
+  const handleTilesetChange = useCallback(
+    (newTileset: TilesetName) => {
+      setWfcg(
+        new WaveFunctionCollapseGrid<TileName>(
+          settings.gridWidth,
+          settings.gridHeight,
+          TILESETS[newTileset]
+        )
+      );
+      setSettings(prev => ({ ...prev, activeTileset: newTileset }));
+    },
+    [settings.activeTileset]
+  );
   function handleWidthChange(newWidth: number) {
+    if (newWidth === 0 || isNaN(newWidth)) return;
     setSettings(prev => ({ ...prev, gridWidth: newWidth }));
     wfcg.resizeAndClear(newWidth, settings.gridHeight);
   }
   function handleHeightChange(newHeight: number) {
-    setSettings(prev => ({ ...prev, gridWidth: newHeight }));
+    if (newHeight === 0 || isNaN(newHeight)) return;
+    setSettings(prev => ({ ...prev, gridHeight: newHeight }));
     wfcg.resizeAndClear(settings.gridWidth, newHeight);
   }
   function handlePlayModeChange(playInstantly: boolean) {
     setSettings(prev => ({ ...prev, playInstantly: playInstantly }));
-  }
-  function handleTilesetChange(newTileset: TilesetName) {
-    setWfcg(
-      new WaveFunctionCollapseGrid<TileName>(
-        settings.gridWidth,
-        settings.gridHeight,
-        TILESETS[newTileset]
-      )
-    );
-    setSettings(prev => ({ ...prev, activeTileset: newTileset }));
   }
   return (
     <>
@@ -74,26 +80,28 @@ export default function Content() {
           <Toggle
             name="playInstantly"
             content="Instantâneo"
-            onChange={e => handlePlayModeChange(e.target.checked)}
+            onChange={handlePlayModeChange}
           />
-          <input
+          <LabeledInput
             name="gridWidth"
-            type="range"
-            min={2}
+            type="number"
+            min={1}
             max={30}
+            value={settings.gridWidth}
             onChange={e => handleWidthChange(parseInt(e.target.value))}
           />
-          <input
+          <LabeledInput
             name="gridHeight"
-            type="range"
-            min={2}
+            type="number"
+            min={1}
             max={30}
+            value={settings.gridHeight}
             onChange={e => handleHeightChange(parseInt(e.target.value))}
           />
         </div>
         <section className={styles.section}>
           <TilesetSelector
-            currentTileset={settings.activeTileset}
+            value={settings.activeTileset}
             onSelect={handleTilesetChange}
           />
           {running ? (

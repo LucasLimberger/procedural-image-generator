@@ -18,7 +18,6 @@ export default function Grid({ width, height, cells, tilesetName }: GridProps) {
     cellElements[index] = (
       <GridCell
         key={`${x},${y}`}
-        c={`${x},${y}`}
         tilesetName={tilesetName}
         tileName={cell.isCollapsed ? cell.possibilities[0] : null}
       />

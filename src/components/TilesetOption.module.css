@@ -7,7 +7,8 @@
   border: none;
   background-color: var(--neutral-clr);
   translate: 1rem;
-  transition: background-color 200ms linear, translate 200ms ease;
+  transition-property: background-color, translate;
+  transition: 200ms ease;
   outline: var(--dark-neutral-clr) solid 0.25rem;
 
   &:hover,

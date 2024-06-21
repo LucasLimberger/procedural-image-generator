@@ -6,11 +6,13 @@ interface PauseOverlayProps {
   onDismiss: () => void;
 }
 
-const PauseOverlay = memo(function PauseOverlay({ onDismiss }: PauseOverlayProps) {
+const PauseOverlay = memo(function PauseOverlay({
+  onDismiss,
+}: PauseOverlayProps) {
   return (
     <div className={styles.PauseOverlay}>
       <button onClick={onDismiss}>
-        <Image src="" alt="Play button" />
+        <Image src="" alt="Botão de Play" />
       </button>
     </div>
   );

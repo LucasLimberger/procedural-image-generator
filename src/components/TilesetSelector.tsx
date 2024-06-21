@@ -1,14 +1,15 @@
 import styles from "./TilesetSelector.module.css";
+import { memo } from "react";
 import TilesetOption from "./TilesetOption";
 import { TILESETS, TilesetName } from "@/scripts/tileData";
 
 interface TilesetSelectorProps {
-  currentTileset: TilesetName;
+  value: TilesetName;
   onSelect: (tilesetName: TilesetName) => void;
 }
 
-export default function TilesetSelector({
-  currentTileset,
+const TilesetSelector = memo(function TilesetSelector({
+  value,
   onSelect,
 }: TilesetSelectorProps) {
   return (
@@ -17,10 +18,11 @@ export default function TilesetSelector({
         <TilesetOption
           key={name}
           tilesetName={name as TilesetName}
-          isSelected={currentTileset === name}
+          isSelected={value === name}
           onSelect={onSelect}
         />
       ))}
     </div>
   );
-}
+});
+export default TilesetSelector;

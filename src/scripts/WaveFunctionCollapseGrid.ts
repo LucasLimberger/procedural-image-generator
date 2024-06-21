@@ -3,7 +3,11 @@ export { WaveFunctionCollapseGrid as default, Tile, type Cell, type Direction };
 type Direction = "up" | "right" | "down" | "left";
 
 class Cell<TileId> {
-  constructor(readonly x: number, readonly y: number, public possibilities: TileId[]) {}
+  constructor(
+    readonly x: number,
+    readonly y: number,
+    public possibilities: TileId[]
+  ) {}
   get isCollapsed() {
     return this.possibilities.length === 1;
   }
@@ -164,7 +168,8 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     neighborCell: Cell<TileId>,
     direction: Direction
   ) {
-    const oppositeDirection = WaveFunctionCollapseGrid.oppositeDirection[direction];
+    const oppositeDirection =
+      WaveFunctionCollapseGrid.oppositeDirection[direction];
     const temp = this.idToTile.get(tile)![direction];
     const validEdges = temp instanceof Array ? temp : [temp];
     const neighborEdges = neighborCell.possibilities.flatMap(
