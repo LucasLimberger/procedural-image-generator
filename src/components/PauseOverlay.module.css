@@ -1,3 +1,25 @@
 .pauseOverlay {
-  background-color: #333;
+  background-color: var(--semi-transparent-overlay-clr);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playButton {
+  background-color: var(--neutral-clr);
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: none;
+
+  outline: var(--dark-neutral-clr) solid 0.25rem;
+  transition: outline-color 200ms ease;
+
+  &:hover,
+  &:focus-visible {
+    outline-color: var(--selection-clr);
+  }
 }

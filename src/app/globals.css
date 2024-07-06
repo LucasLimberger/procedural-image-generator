@@ -6,6 +6,17 @@
 }
 
 :root {
+  --accent-clr: hsl(200 100% 50%);
+  --secondary-clr: hsl(120 90% 25%);
+  --light-neutral-clr: hsl(0 0% 25%);
+  --neutral-clr: hsl(0 0% 15%);
+  --dark-neutral-clr: hsl(0 0% 2%);
+  --semi-transparent-overlay-clr: hsl(0 0% 2% / 0.5);
+  --selection-clr: hsl(240 90% 80%);
+  --text-clr: hsl(0 0% 70%);
+}
+
+:root {
   width: max(100%, 25rem);
   height: 100dvh;
   color: var(--text-clr);
@@ -14,14 +25,4 @@ body {
   height: 100%;
   display: grid;
   grid-auto-rows: max-content 1fr;
-}
-
-:root {
-  --accent-clr: hsl(200, 100%, 50%);
-  --secondary-clr: hsl(120 90% 25%);
-  --light-neutral-clr: hsl(0, 0%, 25%);
-  --neutral-clr: hsl(0, 0%, 15%);
-  --dark-neutral-clr: hsl(0 0% 2%);
-  --selection-clr: hsl(240, 90%, 80%);
-  --text-clr: hsl(0, 0%, 70%);
 }

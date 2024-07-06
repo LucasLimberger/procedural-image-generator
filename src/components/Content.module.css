@@ -15,10 +15,14 @@
   border-bottom: 1px solid var(--light-neutral-clr);
 }
 
-.section {
+.bottomSection {
   background-color: var(--dark-neutral-clr);
-  width: auto;
   display: grid;
-  gap: 1rem;
   grid-template-columns: 6rem 1fr;
+}
+
+.display {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

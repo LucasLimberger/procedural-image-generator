@@ -99,21 +99,20 @@ export default function Content() {
             onChange={e => handleHeightChange(parseInt(e.target.value))}
           />
         </div>
-        <section className={styles.section}>
+        <section className={styles.bottomSection}>
           <TilesetSelector
             value={settings.activeTileset}
             onSelect={handleTilesetChange}
           />
-          {running ? (
+          <div className={styles.display}>
             <Grid
               width={settings.gridWidth}
               height={settings.gridHeight}
               cells={[...wfcg.iterCells()]}
               tilesetName={settings.activeTileset}
             />
-          ) : (
-            <PauseOverlay onDismiss={() => setRunning(true)} />
-          )}
+            {!running && <PauseOverlay onDismiss={() => setRunning(true)} />}
+          </div>
         </section>
       </main>
     </>
