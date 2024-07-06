@@ -1,4 +1,4 @@
-import WaveFunctionCollapseGrid, { Tile } from "./WaveFunctionCollapseGrid";
+import { Tile } from "../scripts/WaveFunctionCollapseGrid";
 
 export { TILESETS, type TilesetName, type TileName };
 
@@ -6,16 +6,6 @@ type TilesetName = keyof typeof TILESETS;
 
 //extrai os nomes de tiles do objeto tilesets
 type TileName = (typeof TILESETS)[TilesetName][number]["id"];
-
-const enum PipeTile {
-  BLANK = "blank",
-  HORIZONTAL = "horizontal",
-  VERTICAL = "vertical",
-  UP = "t up",
-  RIGHT = "t right",
-  DOWN = "t down",
-  LEFT = "t left",
-}
 
 const enum TerrainTile {
   SKY = "sky",
@@ -34,20 +24,21 @@ const enum TerrainTile {
   BOTTOM_RIGHT_INNER = "bottom right inner",
 }
 
+const enum PipeTile {
+  BLANK = "blank",
+  HORIZONTAL = "horizontal",
+  VERTICAL = "vertical",
+  UP = "t up",
+  RIGHT = "t right",
+  DOWN = "t down",
+  LEFT = "t left",
+}
+
 //prettier-ignore
 const TILESETS: {
-  "pipe network": readonly Tile<PipeTile>[];
   terrain: readonly Tile<TerrainTile>[];
+  "pipe network": readonly Tile<PipeTile>[];
 } = {
-  "pipe network": [
-        new Tile(PipeTile.BLANK,      0, 0, 0, 0),
-        new Tile(PipeTile.HORIZONTAL, 0, 1, 0, 1),
-        new Tile(PipeTile.VERTICAL,   1, 0, 1, 0),
-        new Tile(PipeTile.UP,         1, 1, 0, 1),
-        new Tile(PipeTile.RIGHT,      1, 1, 1, 0),
-        new Tile(PipeTile.DOWN,       0, 1, 1, 1),
-        new Tile(PipeTile.LEFT,       1, 0, 1, 1),
-    ],
   terrain: [
     new Tile(TerrainTile.SKY,                [1, 2], [3, 4], [1, 2], [3, 4]),
     new Tile(TerrainTile.CENTER,             0, 0, 0, 0),
@@ -64,4 +55,13 @@ const TILESETS: {
     new Tile(TerrainTile.BOTTOM_LEFT_INNER,  0, 0, 12, 9),
     new Tile(TerrainTile.BOTTOM_RIGHT_INNER, 0, 10, 8, 0),
   ],
+  "pipe network": [
+    new Tile(PipeTile.BLANK,      0, 0, 0, 0),
+    new Tile(PipeTile.HORIZONTAL, 0, 1, 0, 1),
+    new Tile(PipeTile.VERTICAL,   1, 0, 1, 0),
+    new Tile(PipeTile.UP,         1, 1, 0, 1),
+    new Tile(PipeTile.RIGHT,      1, 1, 1, 0),
+    new Tile(PipeTile.DOWN,       0, 1, 1, 1),
+    new Tile(PipeTile.LEFT,       1, 0, 1, 1),
+    ],
 };

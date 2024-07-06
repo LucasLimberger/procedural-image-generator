@@ -1,7 +1,7 @@
 import styles from "./TilesetSelector.module.css";
 import { memo } from "react";
 import TilesetOption from "./TilesetOption";
-import { TILESETS, TilesetName } from "@/scripts/tileData";
+import { TILESETS, TilesetName } from "@/data/tileData";
 
 interface TilesetSelectorProps {
   value: TilesetName;

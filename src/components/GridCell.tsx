@@ -2,7 +2,7 @@
 
 import { memo } from "react";
 import styles from "./GridCell.module.css";
-import { TileName, TilesetName } from "@/scripts/tileData";
+import { TilesetName, TileName } from "@/data/tileData";
 import Image from "next/image";
 
 interface GridCellProps {

@@ -3,7 +3,7 @@
 import styles from "./TilesetOption.module.css";
 import { memo } from "react";
 import Image from "next/image";
-import { TilesetName } from "@/scripts/tileData";
+import { TilesetName } from "@/data/tileData";
 
 interface TilesetOptionProps {
   tilesetName: TilesetName;

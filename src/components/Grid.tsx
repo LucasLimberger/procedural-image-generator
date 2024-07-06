@@ -1,7 +1,7 @@
 import styles from "./Grid.module.css";
 import GridCell from "./GridCell";
 import { Cell } from "../scripts/WaveFunctionCollapseGrid";
-import { TilesetName, TileName } from "../scripts/tileData";
+import { TilesetName, TileName } from "../data/tileData";
 
 interface GridProps {
   width: number;

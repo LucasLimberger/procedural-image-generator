@@ -6,7 +6,7 @@ import TilesetSelector from "./TilesetSelector";
 import Grid from "./Grid";
 import PauseOverlay from "./PauseOverlay";
 import WaveFunctionCollapseGrid from "../scripts/WaveFunctionCollapseGrid";
-import { TILESETS, TilesetName, TileName } from "../scripts/tileData";
+import { TILESETS, TilesetName, TileName } from "../data/tileData";
 import Controls from "./Controls";
 
 export default function Content() {
