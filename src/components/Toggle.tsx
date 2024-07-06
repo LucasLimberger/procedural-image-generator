@@ -5,24 +5,26 @@ import { useId } from "react";
 
 interface ToggleProps {
   name: string;
-  content: string;
+  value: string;
+  isOn: boolean;
   onChange: (value: boolean) => void;
 }
 
-export default function Toggle({ name, content, onChange }: ToggleProps) {
+export default function Toggle({ name, value, isOn, onChange }: ToggleProps) {
   const id = useId();
   return (
     <div>
-      <input
-        type="checkbox"
-        id={id}
-        name={name}
-        value={content}
-        onChange={e => onChange(e.target.checked)}
-        className={styles.checkbox}
-      />
       <label htmlFor={id} className={styles.label}>
-        {content}
+        <input
+          type="checkbox"
+          id={id}
+          name={name}
+          value={value}
+          checked={isOn}
+          onChange={e => onChange(e.target.checked)}
+          className={styles.checkbox}
+        />
+        {value}
       </label>
     </div>
   );

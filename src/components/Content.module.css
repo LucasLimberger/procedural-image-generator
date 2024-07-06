@@ -4,17 +4,6 @@
   grid-template-rows: 3rem 1fr;
 }
 
-.controls {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-
-  background-color: var(--neutral-clr);
-  border-bottom: 1px solid var(--light-neutral-clr);
-}
-
 .bottomSection {
   background-color: var(--dark-neutral-clr);
   display: grid;

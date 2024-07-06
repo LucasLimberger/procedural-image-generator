@@ -7,8 +7,7 @@ import Grid from "./Grid";
 import PauseOverlay from "./PauseOverlay";
 import WaveFunctionCollapseGrid from "../scripts/WaveFunctionCollapseGrid";
 import { TILESETS, TilesetName, TileName } from "../scripts/tileData";
-import Toggle from "./Toggle";
-import LabeledInput from "./LabeledInput";
+import Controls from "./Controls";
 
 export default function Content() {
   const [running, setRunning] = useState(false);
@@ -26,7 +25,7 @@ export default function Content() {
     )
   );
 
-  if (running) {
+  if (running && !wfcg.isDone && settings.playInstantly) {
     wfcg.runUntilDone();
   }
   // useEffect(() => {
@@ -43,20 +42,20 @@ export default function Content() {
   //     return () => clearInterval(interval);
   //   }
   // }, [running, wfcg]);
-
-  const handleTilesetChange = useCallback(
-    (newTileset: TilesetName) => {
+  function rerun() {
+    wfcg.clear();
+  }
+  const handleTilesetChange = useCallback((newTileset: TilesetName) => {
+    setSettings(prev => ({ ...prev, activeTileset: newTileset }));
       setWfcg(
+      prev =>
         new WaveFunctionCollapseGrid<TileName>(
-          settings.gridWidth,
-          settings.gridHeight,
+          prev.width,
+          prev.height,
           TILESETS[newTileset]
         )
       );
-      setSettings(prev => ({ ...prev, activeTileset: newTileset }));
-    },
-    [settings.activeTileset]
-  );
+  }, []);
   function handleWidthChange(newWidth: number) {
     if (newWidth === 0 || isNaN(newWidth)) return;
     setSettings(prev => ({ ...prev, gridWidth: newWidth }));
@@ -73,32 +72,15 @@ export default function Content() {
   return (
     <>
       <main className={styles.main}>
-        <div className={styles.controls}>
-          <button onClick={() => handleTilesetChange(settings.activeTileset)}>
-            Rerun
-          </button>
-          <Toggle
-            name="playInstantly"
-            content="Instantâneo"
-            onChange={handlePlayModeChange}
+        <Controls
+          gridWidth={settings.gridWidth}
+          gridHeight={settings.gridHeight}
+          playInstantly={settings.playInstantly}
+          onWidthChange={handleWidthChange}
+          onHeightChange={handleHeightChange}
+          onPlayModeChange={handlePlayModeChange}
+          onRerunRequest={rerun}
           />
-          <LabeledInput
-            name="gridWidth"
-            type="number"
-            min={1}
-            max={30}
-            value={settings.gridWidth}
-            onChange={e => handleWidthChange(parseInt(e.target.value))}
-          />
-          <LabeledInput
-            name="gridHeight"
-            type="number"
-            min={1}
-            max={30}
-            value={settings.gridHeight}
-            onChange={e => handleHeightChange(parseInt(e.target.value))}
-          />
-        </div>
         <section className={styles.bottomSection}>
           <TilesetSelector
             value={settings.activeTileset}

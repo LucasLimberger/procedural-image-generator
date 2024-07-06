@@ -1,0 +1,20 @@
+.controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  background-color: var(--neutral-clr);
+  border-bottom: 1px solid var(--light-neutral-clr);
+}
+
+.button {
+  font: inherit;
+  padding: 0.125rem;
+}
+
+.numberInput {
+  font: inherit;
+  width: 3rem;
+}
