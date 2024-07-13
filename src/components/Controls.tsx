@@ -1,9 +1,10 @@
 "use client";
 
 import styles from "./Controls.module.css";
-import { useId } from "react";
 import { useLanguageContext } from "@/custom hooks/customHooks";
 import Toggle from "./Toggle";
+import NumericInput from "./NumericInput";
+
 interface ControlsProps {
   gridWidth: number;
   gridHeight: number;
@@ -15,16 +16,15 @@ interface ControlsProps {
 }
 
 export default function Controls({
+  playInstantly,
   gridWidth,
   gridHeight,
-  playInstantly,
+  onPlayModeChange,
   onWidthChange,
   onHeightChange,
-  onPlayModeChange,
   onRerunRequest,
 }: ControlsProps) {
   const languageStrings = useLanguageContext();
-  const id = useId();
   return (
     <div className={styles.controls}>
       <button className={styles.button} onClick={() => onRerunRequest()}>
@@ -36,32 +36,22 @@ export default function Controls({
         isOn={playInstantly}
         onChange={checked => onPlayModeChange(checked)}
       />
-      <label htmlFor={id + "-gridWidth"}>
-        {languageStrings.gridWidthSetting}:
-        <input
-          id={id + "-gridWidth"}
-          className={styles.numberInput}
-          type="number"
-          name="gridWidth"
-          min={1}
-          max={25}
-          value={gridWidth}
-          onChange={e => onWidthChange(parseInt(e.target.value))}
-        />
-      </label>
-      <label htmlFor={id + "-gridHeight"}>
-        {languageStrings.gridHeightSetting}:
-        <input
-          id={id + "-gridHeight"}
-          className={styles.numberInput}
-          type="number"
-          name="gridHeight"
-          min={1}
-          max={25}
-          value={gridHeight}
-          onChange={e => onHeightChange(parseInt(e.target.value))}
-        />
-      </label>
+      <NumericInput
+        name="gridWidth"
+        labelContent={languageStrings.gridWidthSettingName}
+        value={gridWidth}
+        min={1}
+        max={25}
+        onChange={onWidthChange}
+      />
+      <NumericInput
+        name="gridHeight"
+        labelContent={languageStrings.gridHeightSettingName}
+        value={gridHeight}
+        min={1}
+        max={25}
+        onChange={onHeightChange}
+      />
     </div>
   );
 }

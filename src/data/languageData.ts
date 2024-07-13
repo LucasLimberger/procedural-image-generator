@@ -4,16 +4,16 @@ const STRINGS = {
     playButtonAlt: "Começar",
     playInstantly: "Instantâneo",
     rerunButtonText: "Reexecutar",
-    gridWidthSetting: "Largura",
-    gridHeightSetting: "Altura",
+    gridWidthSettingName: "Largura",
+    gridHeightSettingName: "Altura",
   },
   en: {
     title: "Wave Function Collapse",
     playButtonAlt: "Play",
     playInstantly: "Instant",
     rerunButtonText: "Rerun",
-    gridWidthSetting: "Width",
-    gridHeightSetting: "Height",
+    gridWidthSettingName: "Width",
+    gridHeightSettingName: "Height",
   },
 } as const;
 export default STRINGS;

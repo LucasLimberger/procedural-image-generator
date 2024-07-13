@@ -57,12 +57,10 @@ export default function Content() {
       );
   }, []);
   function handleWidthChange(newWidth: number) {
-    if (newWidth === 0 || isNaN(newWidth)) return;
     setSettings(prev => ({ ...prev, gridWidth: newWidth }));
     wfcg.resizeAndClear(newWidth, settings.gridHeight);
   }
   function handleHeightChange(newHeight: number) {
-    if (newHeight === 0 || isNaN(newHeight)) return;
     setSettings(prev => ({ ...prev, gridHeight: newHeight }));
     wfcg.resizeAndClear(settings.gridWidth, newHeight);
   }
