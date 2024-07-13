@@ -1,13 +1,10 @@
 "use client";
 
 import styles from "./Header.module.css";
-import { useContext } from "react";
-import { LanguageContext } from "./LanguageContextProvider";
-import STRINGS from "@/data/languageData";
+import { useLanguageContext } from "@/custom hooks/customHooks";
 
 export default function Header() {
-  const language = useContext(LanguageContext);
-  const title = STRINGS[language].title;
+  const { title } = useLanguageContext();
   return (
     <>
       <title>{title}</title>

@@ -1,11 +1,9 @@
 "use client";
 
 import styles from "./Controls.module.css";
-import { useContext, useId } from "react";
-import { LanguageContext } from "./LanguageContextProvider";
+import { useId } from "react";
+import { useLanguageContext } from "@/custom hooks/customHooks";
 import Toggle from "./Toggle";
-import STRINGS from "@/data/languageData";
-
 interface ControlsProps {
   gridWidth: number;
   gridHeight: number;
@@ -25,12 +23,12 @@ export default function Controls({
   onPlayModeChange,
   onRerunRequest,
 }: ControlsProps) {
-  const language = useContext(LanguageContext);
+  const languageStrings = useLanguageContext();
   const id = useId();
   return (
     <div className={styles.controls}>
       <button className={styles.button} onClick={() => onRerunRequest()}>
-        {STRINGS[language].rerunButtonText}
+        {languageStrings.rerunButtonText}
       </button>
       <Toggle
         name="playInstantly"
@@ -39,7 +37,7 @@ export default function Controls({
         onChange={checked => onPlayModeChange(checked)}
       />
       <label htmlFor={id + "-gridWidth"}>
-        {STRINGS[language].gridWidthSetting}:
+        {languageStrings.gridWidthSetting}:
         <input
           id={id + "-gridWidth"}
           className={styles.numberInput}
@@ -52,7 +50,7 @@ export default function Controls({
         />
       </label>
       <label htmlFor={id + "-gridHeight"}>
-        {STRINGS[language].gridHeightSetting}:
+        {languageStrings.gridHeightSetting}:
         <input
           id={id + "-gridHeight"}
           className={styles.numberInput}

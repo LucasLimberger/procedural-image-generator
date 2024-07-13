@@ -15,5 +15,5 @@ const STRINGS = {
     gridWidthSetting: "Width",
     gridHeightSetting: "Height",
   },
-};
+} as const;
 export default STRINGS;
