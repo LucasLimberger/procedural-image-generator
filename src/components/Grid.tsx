@@ -11,25 +11,19 @@ interface GridProps {
 }
 
 export default function Grid({ width, height, cells, tilesetName }: GridProps) {
-  const cellElements: React.ReactNode[] = Array(width * height);
-  for (const cell of cells) {
-    const { x, y } = cell;
-    const index = (height - y - 1) * width + x; //inverte a coordenada y
-    cellElements[index] = (
-      <GridCell
-        key={`${x},${y}`}
-        tilesetName={tilesetName}
-        tileName={cell.isCollapsed ? cell.possibilities[0] : null}
-      />
-    );
-  }
   return (
     <div className={styles.gridWrapper}>
       <div
         className={styles.grid}
         style={{ "--rows": height, "--columns": width } as React.CSSProperties}
       >
-        {cellElements}
+        {[...cells].map(cell => (
+          <GridCell
+            key={`${cell.x},${cell.y}`}
+            tilesetName={tilesetName}
+            tileName={cell.isCollapsed ? cell.possibilities[0] : null}
+          />
+        ))}
       </div>
     </div>
   );

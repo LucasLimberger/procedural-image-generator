@@ -207,9 +207,9 @@ class WaveFunctionCollapseGrid<
     x: number;
     y: number;
   }[] = [
-		{ direction: "up",    x:  0,  y:  1 },
+		{ direction: "up",    x:  0,  y: -1 },
 		{ direction: "right", x:  1,  y:  0 },
-		{ direction: "down",  x:  0,  y: -1 },
+		{ direction: "down",  x:  0,  y:  1 },
 		{ direction: "left",  x: -1,  y:  0 },
   ];
 
