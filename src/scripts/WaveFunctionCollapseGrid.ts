@@ -2,7 +2,7 @@ export { WaveFunctionCollapseGrid as default, Tile, type Cell, type Direction };
 
 type Direction = "up" | "right" | "down" | "left";
 
-class Cell<TileId> {
+class Cell<TileId extends string | number = string | number> {
   constructor(
     readonly x: number,
     readonly y: number,
@@ -13,7 +13,7 @@ class Cell<TileId> {
   }
 }
 
-class Tile<TileId extends string | number> {
+class Tile<TileId extends string | number = string | number> {
   constructor(
     public id: TileId,
     public up: string | number | readonly (string | number)[],
@@ -24,12 +24,15 @@ class Tile<TileId extends string | number> {
 }
 
 /**
- * Aplica o algoritmo de Wave Function Collapse sobre uma grade de células, em que cada
- * célula pode conter qualquer *tile*.
+ * Aplica o algoritmo de Wave Function Collapse sobre uma grade de células,
+ * em que cada célula pode conter qualquer *Tile*.
  *
- * Cada *tile* é definido por um identificador e uma aresta em cada direção cardeal
+ * Cada *Tile* é definido por um identificador e contém uma aresta válida
+ * ou lista de arestas válidas em cada direção cardeal
  */
-class WaveFunctionCollapseGrid<TileId extends string | number> {
+class WaveFunctionCollapseGrid<
+  TileId extends string | number = string | number
+> {
   private grid: Cell<TileId>[];
   private _width;
   private _height;
@@ -48,8 +51,11 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
   private readonly allTileIds: readonly TileId[];
   private readonly idToTile: Map<TileId, Tile<TileId>>;
   private collisionOcurred = false;
-  private collapseHistory: Cell<TileId>[] = [];
   private gridHistory: Cell<TileId>[][] = [];
+  private collapseHistory: Cell<TileId>[] = [];
+  private get latestCollapse() {
+    return this.collapseHistory.at(-1)!;
+  }
 
   constructor(width: number, height: number, tiles: readonly Tile<TileId>[]) {
     this._width = width;
@@ -94,7 +100,7 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     }
   }
   iterCells() {
-    return this.grid.values();
+    return this.grid.values() as IterableIterator<Readonly<Cell<TileId>>>;
   }
   clear() {
     for (let i = 0; i < this.grid.length; i++) {
@@ -130,7 +136,7 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
   }
 
   private propagateChanges() {
-    const startingCell = this.collapseHistory.at(-1)!;
+    const startingCell = this.latestCollapse;
     const cellsToUpdate = new Set<Cell<TileId>>();
     for (const { neighbor } of this.getNeighboringCells(startingCell)) {
       if (!neighbor.isCollapsed) cellsToUpdate.add(neighbor);
@@ -168,12 +174,11 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     neighborCell: Cell<TileId>,
     direction: Direction
   ) {
-    const oppositeDirection =
-      WaveFunctionCollapseGrid.oppositeDirection[direction];
+    const oppositeDir = WaveFunctionCollapseGrid.oppositeDirection[direction];
     const temp = this.idToTile.get(tile)![direction];
     const validEdges = temp instanceof Array ? temp : [temp];
     const neighborEdges = neighborCell.possibilities.flatMap(
-      tileId => this.idToTile.get(tileId)![oppositeDirection]
+      tileId => this.idToTile.get(tileId)![oppositeDir]
     );
     return validEdges.some(edge => neighborEdges.includes(edge));
   }
