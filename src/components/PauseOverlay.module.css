@@ -8,15 +8,15 @@
 }
 
 .playButton {
-  background-color: var(--neutral-clr);
   position: relative;
   width: 4rem;
   height: 4rem;
-  border-radius: 50%;
-  border: none;
 
+  border: none;
+  border-radius: 50%;
+  background-color: var(--neutral-clr);
   outline: var(--dark-neutral-clr) solid 0.25rem;
-  transition: outline-color 200ms ease;
+  transition: outline-color 200ms;
 
   &:hover,
   &:focus-visible {

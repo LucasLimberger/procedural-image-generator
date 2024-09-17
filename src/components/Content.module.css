@@ -4,10 +4,10 @@
   grid-template-rows: 3rem 1fr;
 }
 
-.bottomSection {
-  background-color: var(--dark-neutral-clr);
+.contentSection {
   display: grid;
   grid-template-columns: 6rem 1fr;
+  background-color: var(--dark-neutral-clr);
 }
 
 .display {

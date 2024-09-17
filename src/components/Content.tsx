@@ -36,7 +36,7 @@ export default function Content() {
 
   useEffect(() => {
     if (!running || wfcg.isDone || settings.playInstantly) return;
-    const interval = setTimeout(() => {
+    const interval = setInterval(() => {
       wfcg.step();
       setStepsTaken(prev => prev + 1);
     }, intervalDuration);
@@ -86,7 +86,7 @@ export default function Content() {
         onPlayModeChange={handlePlayModeChange}
         onRerunRequest={rerun}
       />
-      <section className={styles.bottomSection}>
+      <section className={styles.contentSection}>
         <TilesetSelector
           value={settings.activeTileset}
           onSelect={handleTilesetChange}

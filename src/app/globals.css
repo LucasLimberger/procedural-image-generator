@@ -23,5 +23,5 @@
 body {
   height: 100%;
   display: grid;
-  grid-auto-rows: max-content 1fr;
+  grid-template-rows: max-content 1fr;
 }

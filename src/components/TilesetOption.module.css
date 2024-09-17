@@ -1,15 +1,16 @@
 .tilesetOptionButton {
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 1rem 0 0 1rem;
   padding: 0.5rem;
+  translate: 1rem;
 
   border: none;
+  border-radius: 1rem 0 0 1rem;
   background-color: var(--neutral-clr);
-  translate: 1rem;
-  transition-property: background-color, translate;
-  transition: 200ms ease;
   outline: var(--dark-neutral-clr) solid 0.25rem;
+
+  transition-property: background-color, outline-color, translate;
+  transition-duration: 200ms;
 
   &:hover,
   &:focus-visible {

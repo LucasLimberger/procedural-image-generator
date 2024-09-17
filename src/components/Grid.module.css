@@ -8,10 +8,7 @@
 }
 
 .grid {
-  background-color: var(--light-neutral-clr);
-
   display: grid;
-
   --padding-inline: 1rem;
   --padding-block: 1rem;
   --tile-size: min(
@@ -20,4 +17,6 @@
   );
   grid-template-rows: repeat(var(--rows), var(--tile-size));
   grid-template-columns: repeat(var(--columns), var(--tile-size));
+
+  background-color: var(--light-neutral-clr);
 }
