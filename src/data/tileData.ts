@@ -5,7 +5,7 @@ export { TILESETS, type TilesetName, type TileName };
 type TilesetName = keyof typeof TILESETS;
 
 //extrai os nomes de tiles do objeto tilesets
-type TileName = (typeof TILESETS)[TilesetName][number]["id"];
+type TileName = (typeof TILESETS)[TilesetName][number]["name"];
 
 const enum TerrainTile {
   SKY = "sky",

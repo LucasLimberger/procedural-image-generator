@@ -21,7 +21,7 @@ export default function Grid({ width, height, cells, tilesetName }: GridProps) {
           <GridCell
             key={`${cell.x},${cell.y}`}
             tilesetName={tilesetName}
-            tileName={cell.isCollapsed ? cell.possibilities[0] : null}
+            tileName={cell.collapsedState ?? null}
           />
         ))}
       </div>
