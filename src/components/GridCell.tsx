@@ -2,12 +2,12 @@
 
 import { memo } from "react";
 import styles from "./GridCell.module.css";
-import { TilesetName, TileName } from "@/data/tileData";
+import { TilesetName } from "@/data/tileData";
 import Image from "next/image";
 
 interface GridCellProps {
   tilesetName: TilesetName;
-  tileName: TileName | null;
+  tileName: string | null;
 }
 
 const GridCell = memo(function GridCell({

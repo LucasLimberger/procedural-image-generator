@@ -1,12 +1,12 @@
 import styles from "./Grid.module.css";
 import GridCell from "./GridCell";
 import { Cell } from "../scripts/WaveFunctionCollapseGrid";
-import { TilesetName, TileName } from "../data/tileData";
+import { TilesetName } from "../data/tileData";
 
 interface GridProps {
   width: number;
   height: number;
-  cells: Iterable<Cell<TileName>>;
+  cells: Iterable<Cell<string>>;
   tilesetName: TilesetName;
 }
 
