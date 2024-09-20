@@ -2,20 +2,23 @@ export { WaveFunctionCollapseGrid as default, Tile, type Cell, type Direction };
 
 type Direction = "up" | "right" | "down" | "left";
 
-class Cell<TileId> {
+class Cell<State extends string | number = string | number> {
   constructor(
     readonly x: number,
     readonly y: number,
-    public possibilities: TileId[]
+    public possibleStates: State[]
   ) {}
   get isCollapsed() {
-    return this.possibilities.length === 1;
+    return this.possibleStates.length === 1;
+  }
+  get collapsedState() {
+    return this.isCollapsed ? this.possibleStates[0] : null;
   }
 }
 
-class Tile<TileId extends string | number> {
+class Tile<TileName extends string | number = string | number> {
   constructor(
-    public id: TileId,
+    public name: TileName,
     public up: string | number | readonly (string | number)[],
     public right: string | number | readonly (string | number)[],
     public down: string | number | readonly (string | number)[],
@@ -24,13 +27,17 @@ class Tile<TileId extends string | number> {
 }
 
 /**
- * Aplica o algoritmo de Wave Function Collapse sobre uma grade de células, em que cada
- * célula pode conter qualquer *tile*.
+ * Aplica o algoritmo de Wave Function Collapse sobre uma grade de células, em
+ * que cada célula irá conter um nome de *Tile* como estado.
  *
- * Cada *tile* é definido por um identificador e uma aresta em cada direção cardeal
+ * Cada *Tile* usa um nome como identificador e determina uma aresta válida ou
+ * uma lista de arestas válidas em cada direção cardeal. Dois *Tiles* podem ser
+ * vizinhos somente se as arestas encostadas forem compatíveis.
  */
-class WaveFunctionCollapseGrid<TileId extends string | number> {
-  private grid: Cell<TileId>[];
+class WaveFunctionCollapseGrid<
+  TileName extends string | number = string | number
+> {
+  private grid: Cell<TileName>[];
   private _width;
   private _height;
   private _isDone = false;
@@ -45,40 +52,36 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     return this._isDone;
   }
 
-  private readonly allTileIds: readonly TileId[];
-  private readonly idToTile: Map<TileId, Tile<TileId>>;
+  private readonly allTileNames: readonly TileName[];
+  private readonly nameToTile: Map<TileName, Tile<TileName>>;
   private collisionOcurred = false;
-  private collapseHistory: Cell<TileId>[] = [];
-  private gridHistory: Cell<TileId>[][] = [];
+  private gridHistory: Cell<TileName>[][] = [];
+  private collapseHistory: Cell<TileName>[] = [];
+  private get latestCollapse() {
+    return this.collapseHistory.at(-1)!;
+  }
 
-  constructor(width: number, height: number, tiles: readonly Tile<TileId>[]) {
+  constructor(width: number, height: number, tiles: readonly Tile<TileName>[]) {
     this._width = width;
     this._height = height;
-    this.allTileIds = tiles.map(tile => tile.id);
-    this.idToTile = new Map(tiles.map(tile => [tile.id, tile]));
+    this.allTileNames = tiles.map(tile => tile.name);
+    this.nameToTile = new Map(tiles.map(tile => [tile.name, tile]));
 
-    this.grid = Array(width * height)
-      .fill(0)
-      .map((_, i) => this.createCell(i));
-
+    this.grid = Array(width * height);
+    for (let i = 0; i < this.grid.length; i++) {
+      this.grid[i] = this.createCell(i);
+    }
     this.saveGridToHistory();
   }
-  private createCell(gridIndex: number): Cell<TileId> {
-    return new Cell(
-      gridIndex % this._width,
-      Math.floor(gridIndex / this._width),
-      this.allTileIds.slice()
-    );
-  }
 
-  /** Executa o algoritmo até a grade estiver completa */
+  /** Executa o algoritmo até a grade estiver completa. */
   runUntilDone() {
     while (!this._isDone) {
       this.step();
     }
   }
 
-  /** Avança o algoritmo 1 passo, até o próximo momento onde ele fará uma decisão */
+  /** Avança o algoritmo 1 passo, até o próximo momento onde ele fará uma decisão. */
   step() {
     if (this._isDone) return;
     this.collapseRandomCell();
@@ -88,14 +91,16 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     this._isDone = this.grid.every(cell => cell.isCollapsed);
   }
 
-  forEachCell(callback: (cell: Readonly<Cell<TileId>>) => void) {
+  forEachCell(callback: (cell: Readonly<Cell<TileName>>) => void) {
     for (const cell of this.grid) {
       callback(cell);
     }
   }
+
   iterCells() {
-    return this.grid.values();
+    return this.grid.values() as IterableIterator<Readonly<Cell<TileName>>>;
   }
+
   clear() {
     for (let i = 0; i < this.grid.length; i++) {
       this.grid[i] = this.createCell(i);
@@ -105,6 +110,7 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     this.collapseHistory = [];
     this.saveGridToHistory();
   }
+
   resizeAndClear(newWidth: number, newHeight: number) {
     this._width = newWidth;
     this._height = newHeight;
@@ -112,15 +118,26 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     this.clear();
   }
 
+  private createCell(gridIndex: number): Cell<TileName> {
+    return new Cell(
+      gridIndex % this._width,
+      Math.floor(gridIndex / this._width),
+      this.allTileNames.slice()
+    );
+  }
+
   private collapseRandomCell() {
+    // A entropia de uma célula é a quantidade de estados possívveis dela
     const lowestEntropy = this.grid
       .filter(cell => !cell.isCollapsed)
-      .reduce((a, b) => Math.min(a, b.possibilities.length), Infinity);
+      .reduce((a, b) => Math.min(a, b.possibleStates.length), Infinity);
     const lowestEntropyCells = this.grid.filter(
-      cell => cell.possibilities.length === lowestEntropy
+      cell => cell.possibleStates.length === lowestEntropy
     );
+
     const pickedCell = pickRandom(lowestEntropyCells);
-    pickedCell.possibilities = [pickRandom(pickedCell.possibilities)];
+    const pickedTileName = pickRandom(pickedCell.possibleStates);
+    pickedCell.possibleStates = [pickedTileName];
 
     this.collapseHistory.push(pickedCell);
 
@@ -130,61 +147,67 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
   }
 
   private propagateChanges() {
-    const startingCell = this.collapseHistory.at(-1)!;
-    const cellsToUpdate = new Set<Cell<TileId>>();
+    const startingCell = this.latestCollapse;
+    const cellsToUpdate = new Set<Cell<TileName>>();
     for (const { neighbor } of this.getNeighboringCells(startingCell)) {
       if (!neighbor.isCollapsed) cellsToUpdate.add(neighbor);
     }
 
     while (cellsToUpdate.size > 0) {
       //retira a primeira célula do set
-      const currentCell: Cell<TileId> = cellsToUpdate.values().next().value;
+      const currentCell: Cell<TileName> = cellsToUpdate.values().next().value;
       cellsToUpdate.delete(currentCell);
 
-      const startingLength = currentCell.possibilities.length;
+      const startingLength = currentCell.possibleStates.length;
       this.updateCellPossibilities(currentCell);
 
       if (this.collisionOcurred) return;
 
-      if (currentCell.possibilities.length !== startingLength) {
+      if (currentCell.possibleStates.length !== startingLength) {
         for (const { neighbor } of this.getNeighboringCells(currentCell)) {
           if (!neighbor.isCollapsed) cellsToUpdate.add(neighbor);
         }
       }
     }
   }
-  private updateCellPossibilities(cell: Cell<TileId>) {
+
+  private updateCellPossibilities(cell: Cell<TileName>) {
     for (const { neighbor, direction } of this.getNeighboringCells(cell)) {
-      cell.possibilities = cell.possibilities.filter(possibleTile => {
-        return this.neighborAllowsTile(possibleTile, neighbor, direction);
+      cell.possibleStates = cell.possibleStates.filter(tileName => {
+        return this.neighborAllowsTile(tileName, neighbor, direction);
       });
     }
-    if (cell.possibilities.length === 0) {
+    if (cell.possibleStates.length === 0) {
       this.collisionOcurred = true;
     }
   }
+
   private neighborAllowsTile(
-    tile: TileId,
-    neighborCell: Cell<TileId>,
+    tileName: TileName,
+    neighborCell: Cell<TileName>,
     direction: Direction
   ) {
-    const oppositeDirection =
-      WaveFunctionCollapseGrid.oppositeDirection[direction];
-    const temp = this.idToTile.get(tile)![direction];
-    const validEdges = temp instanceof Array ? temp : [temp];
-    const neighborEdges = neighborCell.possibilities.flatMap(
-      tileId => this.idToTile.get(tileId)![oppositeDirection]
+    const oppositeDir = WaveFunctionCollapseGrid.oppositeDirection[direction];
+    const allowedEdges = neighborCell.possibleStates.flatMap(
+      neighborTileName => this.getTileFromName(neighborTileName)[oppositeDir]
     );
-    return validEdges.some(edge => neighborEdges.includes(edge));
+    const temp = this.getTileFromName(tileName)[direction];
+    const edges = temp instanceof Array ? temp : [temp];
+    return edges.some(edge => allowedEdges.includes(edge));
   }
-  private static readonly oppositeDirection: Record<Direction, Direction> = {
+
+  private getTileFromName(tileName: TileName) {
+    return this.nameToTile.get(tileName)!;
+  }
+
+  private static readonly oppositeDirection = {
     up: "down",
     right: "left",
     down: "up",
     left: "right",
-  };
+  } as const;
 
-  private *getNeighboringCells(cell: Cell<TileId>) {
+  private *getNeighboringCells(cell: Cell<TileName>) {
     for (const { direction, x, y } of WaveFunctionCollapseGrid.adjacencies) {
       const neighbor = this.getCellAtPosition(cell.x + x, cell.y + y);
       if (neighbor !== null) {
@@ -192,21 +215,18 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
       }
     }
   }
+
   private getCellAtPosition(x: number, y: number) {
     if (x < 0 || x >= this._width || y < 0 || y >= this._height) return null;
     return this.grid[y * this._width + x];
   }
   // prettier-ignore
-  private static readonly adjacencies: readonly {
-    direction: Direction;
-    x: number;
-    y: number;
-  }[] = [
-		{ direction: "up",    x:  0,  y:  1 },
+  private static readonly adjacencies = [
+		{ direction: "up",    x:  0,  y: -1 },
 		{ direction: "right", x:  1,  y:  0 },
-		{ direction: "down",  x:  0,  y: -1 },
+		{ direction: "down",  x:  0,  y:  1 },
 		{ direction: "left",  x: -1,  y:  0 },
-  ];
+  ] as const;
 
   private backtrack() {
     this.collisionOcurred = false;
@@ -215,22 +235,26 @@ class WaveFunctionCollapseGrid<TileId extends string | number> {
     this.grid = this.gridHistory.pop()!;
     const cellPicked = this.collapseHistory.pop()!;
 
-    // remove a possibilidade que levou a uma colisão
-    const index = cellPicked.y * this._width + cellPicked.x;
-    const possibilityPicked = cellPicked.possibilities[0];
-    const replacementCell = this.grid[index];
-    replacementCell.possibilities = replacementCell.possibilities.filter(
-      p => p !== possibilityPicked
-    );
+    const tileNamePicked = cellPicked.collapsedState!;
+    const recoveredCell = this.getCellAtPosition(cellPicked.x, cellPicked.y)!;
+    removeTileFromPossibilities(recoveredCell, tileNamePicked);
+    // desconsidera o Tile que causou a colisão
 
-    if (replacementCell.possibilities.length === 0) {
+    if (recoveredCell.possibleStates.length === 0) {
       this.backtrack();
+    }
+
+    function removeTileFromPossibilities(
+      cell: Cell<TileName>,
+      tileName: TileName
+    ) {
+      cell.possibleStates = cell.possibleStates.filter(s => s !== tileName);
     }
   }
 
   private saveGridToHistory() {
     const gridCopy = this.grid.map(
-      cell => new Cell(cell.x, cell.y, cell.possibilities.slice())
+      cell => new Cell(cell.x, cell.y, cell.possibleStates.slice())
     );
     this.gridHistory.push(gridCopy);
   }

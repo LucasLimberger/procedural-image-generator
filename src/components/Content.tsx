@@ -7,7 +7,7 @@ import TilesetSelector from "./TilesetSelector";
 import Grid from "./Grid";
 import PauseOverlay from "./PauseOverlay";
 import WaveFunctionCollapseGrid from "../scripts/WaveFunctionCollapseGrid";
-import { TILESETS, TilesetName, TileName } from "../data/tileData";
+import { TILESETS, TilesetName } from "../data/tileData";
 
 export default function Content() {
   const intervalDuration = 100;
@@ -20,7 +20,7 @@ export default function Content() {
     playInstantly: false,
   });
   const [wfcg, setWfcg] = useState(
-    new WaveFunctionCollapseGrid<TileName>(
+    new WaveFunctionCollapseGrid(
       settings.gridWidth,
       settings.gridHeight,
       TILESETS[settings.activeTileset]
@@ -56,7 +56,7 @@ export default function Content() {
     setSettings(prev => ({ ...prev, activeTileset: newTileset }));
     setWfcg(
       prev =>
-        new WaveFunctionCollapseGrid<TileName>(
+        new WaveFunctionCollapseGrid(
           prev.width,
           prev.height,
           TILESETS[newTileset]
