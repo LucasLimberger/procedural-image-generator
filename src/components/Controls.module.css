@@ -7,7 +7,8 @@
 
   background-color: var(--neutral-clr);
   border-bottom: 1px solid var(--light-neutral-clr);
-  color: var(--text-clr);
+  color: var(--text-primary-clr);
+  font-weight: 500;
 }
 
 .button {

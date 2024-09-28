@@ -14,7 +14,7 @@
 
   &:hover,
   &:focus-visible {
-    outline-color: var(--selection-clr);
+    outline-color: var(--focus-outline-clr);
   }
   &.selectedTileset {
     background-color: var(--dark-neutral-clr);

@@ -5,20 +5,21 @@
 }
 
 :root {
-  --accent-clr: hsl(200 100% 50%);
-  --secondary-clr: hsl(120 90% 25%);
-  --light-neutral-clr: hsl(0 0% 25%);
-  --neutral-clr: hsl(0 0% 15%);
-  --dark-neutral-clr: hsl(0 0% 2%);
-  --semi-transparent-overlay-clr: hsl(0 0% 2% / 0.5);
-  --selection-clr: hsl(240 90% 80%);
-  --text-clr: hsl(0 0% 70%);
+  --primary-clr: hsl(140 80% 65%);
+  --secondary-clr: hsl(180 75% 25%);
+  --light-neutral-clr: hsl(0 0% 50%);
+  --neutral-clr: hsl(0 0% 18%);
+  --dark-neutral-clr: hsl(0 0% 5%);
+  --text-primary-clr: hsl(0 0% 90%);
+  --text-secondary-clr: hsl(0 0% 70%);
+  --focus-outline-clr: hsl(240 70% 70%);
+  --semi-transparent-overlay-clr: hsl(0 0% 0% / 0.5);
 }
 
 :root {
   width: max(100%, 25rem);
   height: 100dvh;
-  color: var(--text-clr);
+  color: var(--text-primary-clr);
 }
 body {
   height: 100%;

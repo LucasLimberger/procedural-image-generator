@@ -15,11 +15,16 @@
   border: none;
   border-radius: 50%;
   background-color: var(--neutral-clr);
-  outline: var(--dark-neutral-clr) solid 0.25rem;
-  transition: outline-color 200ms;
+  cursor: pointer;
+  outline: var(--primary-clr) 0.25rem solid;
+  transition-property: background-color, outline-color;
+  transition-duration: 200ms;
 
   &:hover,
   &:focus-visible {
-    outline-color: var(--selection-clr);
+    background-color: var(--dark-neutral-clr);
+  }
+  &:focus-visible {
+    outline-color: var(--focus-outline-clr);
   }
 }
