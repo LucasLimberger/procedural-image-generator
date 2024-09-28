@@ -12,11 +12,11 @@ interface PauseOverlayProps {
 const PauseOverlay = memo(function PauseOverlay({
   onDismiss,
 }: PauseOverlayProps) {
-  const { playButtonAlt } = useLanguageContext();
+  const { playButtonDescription } = useLanguageContext();
   return (
     <div className={styles.pauseOverlay}>
       <button className={styles.playButton} onClick={onDismiss}>
-        <Image fill src="./icons/play button.svg" alt={playButtonAlt} />
+        <Image fill src="./icons/play button.svg" alt={playButtonDescription} />
       </button>
     </div>
   );

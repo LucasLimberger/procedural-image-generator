@@ -28,25 +28,25 @@ export default function Controls({
   return (
     <div className={styles.controls}>
       <button className={styles.button} onClick={() => onRerunRequest()}>
-        {languageStrings.rerunButtonText}
+        {languageStrings.rerunButtonDescription}
       </button>
       <Toggle
-        name="playInstantly"
-        value="Instantâneo"
+        name={languageStrings.playInstantlySettingName}
+        value={languageStrings.playInstantlySettingName}
         isOn={playInstantly}
         onChange={checked => onPlayModeChange(checked)}
       />
       <NumericInput
-        name="gridWidth"
-        labelContent={languageStrings.gridWidthSettingName}
+        name={languageStrings.gridWidthSettingName}
+        labelContent={languageStrings.gridWidthSettingLabel}
         value={gridWidth}
         min={1}
         max={25}
         onChange={onWidthChange}
       />
       <NumericInput
-        name="gridHeight"
-        labelContent={languageStrings.gridHeightSettingName}
+        name={languageStrings.gridHeightSettingName}
+        labelContent={languageStrings.gridHeightSettingLabel}
         value={gridHeight}
         min={1}
         max={25}
