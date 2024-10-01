@@ -1,11 +1,11 @@
 "use client";
 
 import styles from "./NumericInput.module.css";
-import { useId } from "react";
+import { useId, useRef } from "react";
 
 interface NumericInputProps {
-  name: string;
   labelContent?: React.ReactNode;
+  name: string;
   value: number;
   min?: number;
   max?: number;
@@ -19,6 +19,25 @@ export default function NumericInput({
   ...inputsProps
 }: NumericInputProps) {
   const id = useId();
+  const prevValue = useRef(inputsProps.value);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const newValue = adjustedNumberInput(e);
+    if (newValue != prevValue.current) {
+      prevValue.current = newValue;
+      onChange(newValue);
+    }
+  }
+
+  function adjustedNumberInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const min = Number(e.target.min || -Infinity);
+    const max = Number(e.target.max || Infinity);
+    const step = Number(e.target.step || 1);
+    let value = Number(e.target.value);
+    value = Math.round((value - min) / step) * step + min;
+    return Math.min(max, Math.max(min, value));
+  }
+
   return (
     <label htmlFor={id}>
       {labelContent}
@@ -27,17 +46,8 @@ export default function NumericInput({
         id={id}
         type="number"
         {...inputsProps}
-        onChange={e => onChange(clampedNumberInput(e))}
+        onChange={handleChange}
       />
     </label>
   );
-}
-
-function clampedNumberInput(e: React.ChangeEvent<HTMLInputElement>) {
-  const min = Number(e.target.min || -Infinity);
-  const max = Number(e.target.max || Infinity);
-  const step = Number(e.target.step || 1);
-  let value = Number(e.target.value);
-  value = Math.round((value - min) / step) * step + min;
-  return Math.min(max, Math.max(min, value));
 }
