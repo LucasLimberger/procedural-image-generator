@@ -13,20 +13,21 @@
 
 .playButton {
   position: relative;
-  width: 4rem;
-  height: 4rem;
+  width: 4.5rem;
+  height: 4.5rem;
 
-  border: none;
   border-radius: 50%;
   background-color: var(--neutral-clr);
+  border: var(--text-primary-clr) 0.25rem solid;
+  outline: transparent 0.125rem solid;
+  outline-offset: 1px;
   cursor: pointer;
-  outline: var(--primary-clr) 0.25rem solid;
+
   transition-property: background-color, outline-color;
   transition-duration: 200ms;
 
-  &:hover,
-  &:focus-visible {
-    background-color: var(--dark-neutral-clr);
+  &:hover {
+    background-color: var(--secondary-clr);
   }
   &:focus-visible {
     outline-color: var(--focus-outline-clr);
