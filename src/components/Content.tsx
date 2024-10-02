@@ -91,15 +91,13 @@ export default function Content() {
           value={settings.activeTileset}
           onSelect={handleTilesetChange}
         />
-        <div className={styles.display}>
-          <Grid
-            width={settings.gridWidth}
-            height={settings.gridHeight}
-            cells={[...wfcg.iterCells()]}
-            tilesetName={settings.activeTileset}
-          />
-          {!running && <PauseOverlay onDismiss={() => setRunning(true)} />}
-        </div>
+        <Grid
+          width={settings.gridWidth}
+          height={settings.gridHeight}
+          cells={[...wfcg.iterCells()]}
+          tilesetName={settings.activeTileset}
+        />
+        {!running && <PauseOverlay onDismiss={() => setRunning(true)} />}
       </section>
     </main>
   );

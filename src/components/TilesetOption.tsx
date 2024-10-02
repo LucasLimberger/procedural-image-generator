@@ -17,12 +17,14 @@ const TilesetOption = memo(function TilesetOption({
   onSelect,
 }: TilesetOptionProps) {
   let buttonClasses = styles.tilesetOptionButton;
-  if (isSelected) buttonClasses += " " + styles.selectedTileset;
+  if (isSelected) buttonClasses += " " + styles.selected;
+
   return (
     <button
       className={buttonClasses}
+      disabled={isSelected}
       onClick={() => {
-        if (!isSelected) onSelect(tilesetName);
+        onSelect(tilesetName);
       }}
     >
       <div className={styles.imageWrapper}>

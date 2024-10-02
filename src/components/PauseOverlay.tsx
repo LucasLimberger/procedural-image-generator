@@ -14,7 +14,7 @@ const PauseOverlay = memo(function PauseOverlay({
 }: PauseOverlayProps) {
   const { playButtonDescription } = useLanguageContext();
   return (
-    <div className={styles.pauseOverlay}>
+    <div className={styles.backdrop}>
       <button className={styles.playButton} onClick={onDismiss}>
         <Image fill src="./icons/play button.svg" alt={playButtonDescription} />
       </button>

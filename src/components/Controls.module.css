@@ -3,7 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 3rem;
+  padding: 1rem;
 
   background-color: var(--neutral-clr);
   border-bottom: 1px solid var(--light-neutral-clr);

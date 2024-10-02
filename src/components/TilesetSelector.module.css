@@ -1,11 +1,7 @@
 .tilesetSelector {
-  position: relative;
-  overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  padding-left: 1rem;
 }
