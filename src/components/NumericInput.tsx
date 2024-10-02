@@ -39,7 +39,7 @@ export default function NumericInput({
   }
 
   return (
-    <label htmlFor={id}>
+    <label className={styles.label} htmlFor={id}>
       {labelContent}
       <input
         className={styles.input}
