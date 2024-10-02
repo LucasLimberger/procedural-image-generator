@@ -17,7 +17,7 @@ export default function Content() {
     activeTileset: "terrain" as TilesetName,
     gridWidth: 10,
     gridHeight: 10,
-    playInstantly: false,
+    skipAnimation: false,
   });
   const [wfcg, setWfcg] = useState(
     new WaveFunctionCollapseGrid(
@@ -27,7 +27,7 @@ export default function Content() {
     )
   );
 
-  if (running && settings.playInstantly) {
+  if (running && settings.skipAnimation) {
     while (!wfcg.isDone) {
       wfcg.step();
       setStepsTaken(prev => prev + 1);
@@ -35,13 +35,13 @@ export default function Content() {
   }
 
   useEffect(() => {
-    if (!running || wfcg.isDone || settings.playInstantly) return;
+    if (!running || wfcg.isDone || settings.skipAnimation) return;
     const interval = setInterval(() => {
       wfcg.step();
       setStepsTaken(prev => prev + 1);
     }, intervalDuration);
     return () => clearInterval(interval);
-  }, [running, wfcg, stepsTaken, settings.playInstantly]);
+  }, [running, wfcg, stepsTaken, settings.skipAnimation]);
 
   useEffect(() => {
     setStepsTaken(0);
@@ -71,8 +71,8 @@ export default function Content() {
     setSettings(prev => ({ ...prev, gridHeight: newHeight }));
     wfcg.resizeAndClear(settings.gridWidth, newHeight);
   }
-  function handlePlayModeChange(playInstantly: boolean) {
-    setSettings(prev => ({ ...prev, playInstantly: playInstantly }));
+  function handleAnimationModeChange(skipAnimation: boolean) {
+    setSettings(prev => ({ ...prev, skipAnimation }));
   }
 
   return (
@@ -80,10 +80,10 @@ export default function Content() {
       <Controls
         gridWidth={settings.gridWidth}
         gridHeight={settings.gridHeight}
-        playInstantly={settings.playInstantly}
+        skipAnimation={settings.skipAnimation}
         onWidthChange={handleWidthChange}
         onHeightChange={handleHeightChange}
-        onPlayModeChange={handlePlayModeChange}
+        onAnimationModeChange={handleAnimationModeChange}
         onRerunRequest={rerun}
       />
       <section className={styles.contentSection}>

@@ -8,18 +8,18 @@ import NumericInput from "./NumericInput";
 interface ControlsProps {
   gridWidth: number;
   gridHeight: number;
-  playInstantly: boolean;
+  skipAnimation: boolean;
   onWidthChange: (newWidth: number) => void;
   onHeightChange: (newHeight: number) => void;
-  onPlayModeChange: (newPlayMode: boolean) => void;
+  onAnimationModeChange: (newPlayMode: boolean) => void;
   onRerunRequest: () => void;
 }
 
 export default function Controls({
-  playInstantly,
+  skipAnimation,
   gridWidth,
   gridHeight,
-  onPlayModeChange,
+  onAnimationModeChange,
   onWidthChange,
   onHeightChange,
   onRerunRequest,
@@ -31,10 +31,10 @@ export default function Controls({
         {languageStrings.rerunButtonDescription}
       </button>
       <Switch
-        name={languageStrings.playInstantlySettingName}
-        value={languageStrings.playInstantlySettingName}
-        isOn={playInstantly}
-        onChange={checked => onPlayModeChange(checked)}
+        name={languageStrings.skipAnimationSettingName}
+        value={languageStrings.skipAnimationSettingName}
+        isOn={skipAnimation}
+        onChange={checked => onAnimationModeChange(checked)}
       />
       <NumericInput
         name={languageStrings.gridWidthSettingName}
