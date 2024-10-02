@@ -1,16 +1,16 @@
 "use client";
 
-import styles from "./Toggle.module.css";
+import styles from "./Switch.module.css";
 import { useId } from "react";
 
-interface ToggleProps {
+interface SwitchProps {
   name: string;
   value: string;
   isOn: boolean;
   onChange: (value: boolean) => void;
 }
 
-export default function Toggle({ name, value, isOn, onChange }: ToggleProps) {
+export default function Switch({ name, value, isOn, onChange }: SwitchProps) {
   const id = useId();
   return (
     <div>
@@ -24,6 +24,7 @@ export default function Toggle({ name, value, isOn, onChange }: ToggleProps) {
           onChange={e => onChange(e.target.checked)}
           className={styles.checkbox}
         />
+        <span className={styles.sliderTrack} />
         {value}
       </label>
     </div>

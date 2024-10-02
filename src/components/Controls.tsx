@@ -2,7 +2,7 @@
 
 import styles from "./Controls.module.css";
 import { useLanguageContext } from "@/custom hooks/customHooks";
-import Toggle from "./Toggle";
+import Switch from "./Switch";
 import NumericInput from "./NumericInput";
 
 interface ControlsProps {
@@ -30,7 +30,7 @@ export default function Controls({
       <button className={styles.button} onClick={() => onRerunRequest()}>
         {languageStrings.rerunButtonDescription}
       </button>
-      <Toggle
+      <Switch
         name={languageStrings.playInstantlySettingName}
         value={languageStrings.playInstantlySettingName}
         isOn={playInstantly}

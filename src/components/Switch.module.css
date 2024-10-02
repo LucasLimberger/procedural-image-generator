@@ -1,0 +1,62 @@
+.label {
+  vertical-align: middle;
+}
+
+.checkbox {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.sliderTrack {
+  display: inline-block;
+  position: relative;
+  width: 2.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+
+  vertical-align: middle;
+  border-radius: 0.75rem;
+  background-color: var(--light-neutral-clr);
+  outline: transparent 0.125rem solid;
+  outline-offset: 1px;
+  cursor: pointer;
+
+  transition-property: background-color, outline-color;
+  transition-duration: 200ms;
+}
+
+.sliderTrack::before {
+  content: "";
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+
+  border-radius: 50%;
+  background-color: var(--neutral-clr);
+
+  transition: background-color 200ms, translate 150ms ease-in-out;
+  @media (prefers-reduced-motion) {
+    transition: background-color 200ms;
+  }
+}
+
+.sliderTrack:hover::before {
+  background-color: var(--dark-neutral-clr);
+}
+
+.checkbox:focus-visible + .sliderTrack {
+  outline: var(--focus-outline-clr) 0.125rem solid;
+}
+.checkbox:focus-visible + .sliderTrack::before {
+  background-color: var(--dark-neutral-clr);
+}
+
+.checkbox:checked + .sliderTrack {
+  background-color: var(--primary-clr);
+}
+.checkbox:checked + .sliderTrack::before {
+  translate: 1rem;
+}
