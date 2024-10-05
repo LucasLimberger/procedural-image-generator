@@ -20,3 +20,11 @@
 
   background-color: var(--neutral-clr);
 }
+
+.gridCell {
+  position: relative;
+}
+
+.tileImage {
+  display: block;
+}

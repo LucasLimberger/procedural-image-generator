@@ -1,6 +1,6 @@
 import styles from "./TilesetSelector.module.css";
 import { memo } from "react";
-import TilesetOption from "./TilesetOption";
+import Image from "next/image";
 import { TILESETS, TilesetName } from "@/data/tileData";
 
 interface TilesetSelectorProps {
@@ -26,3 +26,37 @@ const TilesetSelector = memo(function TilesetSelector({
   );
 });
 export default TilesetSelector;
+
+interface TilesetOptionProps {
+  tilesetName: TilesetName;
+  isSelected: boolean;
+  onSelect: (tilesetName: TilesetName) => void;
+}
+
+const TilesetOption = memo(function TilesetOption({
+  tilesetName,
+  isSelected,
+  onSelect,
+}: TilesetOptionProps) {
+  let buttonClasses = styles.tilesetOptionButton;
+  if (isSelected) buttonClasses += " " + styles.selected;
+
+  return (
+    <button
+      className={buttonClasses}
+      disabled={isSelected}
+      onClick={() => {
+        onSelect(tilesetName);
+      }}
+    >
+      <div className={styles.imageWrapper}>
+        <Image
+          className={styles.image}
+          fill
+          src={`./tileset images/${tilesetName}.svg`}
+          alt=""
+        />
+      </div>
+    </button>
+  );
+});

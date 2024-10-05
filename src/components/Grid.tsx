@@ -1,6 +1,7 @@
 import styles from "./Grid.module.css";
-import GridCell from "./GridCell";
-import { Cell } from "../scripts/WaveFunctionCollapseGrid";
+import { memo } from "react";
+import Image from "next/image";
+import { type Cell } from "../scripts/WaveFunctionCollapseGrid";
 import { TilesetName } from "../data/tileData";
 
 interface GridProps {
@@ -28,3 +29,25 @@ export default function Grid({ width, height, cells, tilesetName }: GridProps) {
     </div>
   );
 }
+
+interface GridCellProps {
+  tilesetName: TilesetName;
+  tileName: string | null;
+}
+
+const GridCell = memo(function GridCell({
+  tilesetName,
+  tileName,
+}: GridCellProps) {
+  const tileSource = tileName === null ? "empty" : `${tilesetName}/${tileName}`;
+  return (
+    <div className={styles.gridCell}>
+      <Image
+        fill
+        className={styles.tileImage}
+        src={`./tile images/${tileSource}.svg`}
+        alt=""
+      />
+    </div>
+  );
+});
