@@ -4,31 +4,58 @@ import styles from "./Controls.module.css";
 import { useLanguageContext } from "@/custom hooks/customHooks";
 import Switch from "./Switch";
 import NumericInput from "./NumericInput";
+import Image from "next/image";
 
 interface ControlsProps {
   gridWidth: number;
   gridHeight: number;
   skipAnimation: boolean;
+  animationState: "done" | "running" | "paused";
   onWidthChange: (newWidth: number) => void;
   onHeightChange: (newHeight: number) => void;
-  onAnimationModeChange: (newPlayMode: boolean) => void;
-  onRerunRequest: () => void;
+  onAnimationModeChange: (skipAnimation: boolean) => void;
+  onPlayPause: () => void;
 }
 
 export default function Controls({
   skipAnimation,
   gridWidth,
   gridHeight,
+  animationState,
   onAnimationModeChange,
   onWidthChange,
   onHeightChange,
-  onRerunRequest,
+  onPlayPause: onRerunRequest,
 }: ControlsProps) {
   const languageStrings = useLanguageContext();
+
+  let playButtonSrc: string;
+  let playButtonAlt: string;
+  let playButtonClassName = styles.button + " ";
+  if (animationState === "done") {
+    playButtonSrc = "restart icon";
+    playButtonAlt = languageStrings.rerunButtonDescription;
+    playButtonClassName += styles.restartButton;
+  } else if (animationState === "running") {
+    playButtonSrc = "pause icon";
+    playButtonAlt = languageStrings.pauseButtonDescription;
+    playButtonClassName += styles.pauseButton;
+  } else {
+    playButtonSrc = "play icon";
+    playButtonAlt = languageStrings.playButtonDescription;
+    playButtonClassName += styles.playButton;
+  }
+
   return (
     <div className={styles.controls}>
-      <button className={styles.button} onClick={() => onRerunRequest()}>
-        {languageStrings.rerunButtonDescription}
+      <button className={playButtonClassName} onClick={() => onRerunRequest()}>
+        <Image
+          fill
+          className={styles.buttonIcon}
+          src={`./icons/${playButtonSrc}.svg`}
+          alt={playButtonAlt}
+          title={playButtonAlt}
+        />
       </button>
       <Switch
         name={languageStrings.skipAnimationSettingName}

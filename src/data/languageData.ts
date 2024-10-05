@@ -1,7 +1,7 @@
 const STRINGS = {
   pt: {
     title: "placeholder-pt-title",
-    playButtonDescription: "Começar",
+    playButtonDescription: "Iniciar",
     pauseButtonDescription: "Pausar",
     rerunButtonDescription: "Reiniciar",
     skipAnimationSettingName: "Pular Animação",

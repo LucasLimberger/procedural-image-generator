@@ -16,7 +16,12 @@ const PauseOverlay = memo(function PauseOverlay({
   return (
     <div className={styles.backdrop}>
       <button className={styles.playButton} onClick={onDismiss}>
-        <Image fill src="./icons/play button.svg" alt={playButtonDescription} />
+        <Image
+          fill
+          src="./icons/play icon.svg"
+          alt={playButtonDescription}
+          title={playButtonDescription}
+        />
       </button>
     </div>
   );
