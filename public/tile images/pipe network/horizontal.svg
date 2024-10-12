@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-	<rect x="-1" y="-1" width="50" height="50" fill="#2d3646"/>
-	<rect x="-1" y="29" width="50" height="3" fill="#212121"/>
-	<rect x="-1" y="23" width="50" height="7" fill="#2e2e2e"/>
-	<rect x="-1" y="19" width="50" height="5" fill="#383838"/>
-	<rect x="-1" y="16" width="50" height="4" fill="#4d4d4d"/>
-	<rect x="-1" y="17" width="50" height="1" fill="#666"/>
+	<rect x="-1" y="-1" width="50" height="50" fill="#272727"/>
+	<g fill="#2d0c0c">
+		<rect x="24.75" y="36.75" width="22.5" height="10.5"/>
+		<rect x=".75" y="36.75" width="22.5" height="10.5"/>
+		<rect x="36.75" y="24.75" width="22.5" height="10.5"/>
+		<rect x="12.75" y="24.75" width="22.5" height="10.5"/>
+		<rect x="-11.25" y="24.75" width="22.5" height="10.5"/>
+		<rect x="24.75" y="12.75" width="22.5" height="10.5"/>
+		<rect x=".75" y="12.75" width="22.5" height="10.5"/>
+		<rect x="36.75" y=".75" width="22.5" height="10.5"/>
+		<rect x="12.75" y=".75" width="22.5" height="10.5"/>
+		<rect x="-11.25" y=".75" width="22.5" height="10.5"/>
+	</g>
+	<g>
+		<rect x="-1" y="29" width="50" height="3" fill="#3f3f5f"/>
+		<rect x="-1" y="24" width="50" height="6" fill="#5a5374"/>
+		<rect x="-1" y="19" width="50" height="6" fill="#6e6382"/>
+		<rect x="-1" y="16" width="50" height="4" fill="#8c8197"/>
+		<rect x="-1" y="17" width="50" height="1" fill="#b5acb9"/>
+	</g>
 </svg>

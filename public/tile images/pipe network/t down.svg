@@ -2,30 +2,42 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
 	<defs>
-		<mask id="mask1" maskUnits="userSpaceOnUse">
-			<path d="m16-1v19a8 4.5 0 0 0 8 4 8 4.5 0 0 0 8-4v-19z" fill="#fff"/>
-		</mask>
+		<linearGradient id="linearGradient1" x1="10.03" x2="23.66" y1="18.14" y2="18.14" gradientTransform="scale(1.396 .7165)" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#382e3d" offset="0"/>
+			<stop stop-color="#151528" offset="1"/>
+		</linearGradient>
 		<mask id="mask2" maskUnits="userSpaceOnUse">
 			<path d="m14 13h2v3.75h16v-3.75h2v10h-20z" fill="#fff"/>
 		</mask>
+		<mask id="mask29" maskUnits="userSpaceOnUse">
+			<path d="m16-1.001v19a8 4.5 0 0 0 8 4 8 4.5 0 0 0 8-4v-19z" fill="#fff"/>
+		</mask>
 	</defs>
-	<rect transform="scale(-1)" x="-49" y="-49" width="50" height="50" fill="#2d3646"/>
-	<g transform="rotate(180,24,24)">
-		<rect x="-1" y="16" width="50" height="3" fill="#212121"/>
-		<rect x="-1" y="18" width="50" height="7" fill="#2e2e2e"/>
-		<rect x="-1" y="24" width="50" height="5" fill="#383838"/>
-		<rect x="-1" y="28" width="50" height="4" fill="#4d4d4d"/>
-		<rect x="-1" y="30" width="50" height="1" fill="#666"/>
+	<rect x="-1" y="-1" width="50" height="50" fill="#272727"/>
+	<g fill="#2d0c0c">
+		<rect x="24.75" y="36.75" width="22.5" height="10.5"/>
+		<rect x=".75" y="36.75" width="22.5" height="10.5"/>
+		<rect x="36.75" y="24.75" width="22.5" height="10.5"/>
+		<rect x="12.75" y="24.75" width="22.5" height="10.5"/>
+		<rect x="-11.25" y="24.75" width="22.5" height="10.5"/>
+		<rect x="24.75" y="12.75" width="22.5" height="10.5"/>
+		<rect x=".75" y="12.75" width="22.5" height="10.5"/>
+		<rect x="36.75" y=".75" width="22.5" height="10.5"/>
+		<rect x="12.75" y=".75" width="22.5" height="10.5"/>
+		<rect x="-11.25" y=".75" width="22.5" height="10.5"/>
 	</g>
-	<g transform="rotate(180,24,24)" mask="url(#mask1)">
-		<g>
-			<rect x="30" y="-1" width="3" height="23" fill="#141414"/>
-			<rect x="28" y="-1" width="3" height="23" fill="#212121"/>
-			<rect x="21" y="-1" width="8" height="23" fill="#2e2e2e"/>
-		</g>
-		<rect x="18" y="-1" width="4" height="23" fill="#383838"/>
-		<rect x="16.1" y="-1" width="2.9" height="23" fill="#4d4d4d"/>
-		<rect x="15" y="-1" width="2" height="23" fill="#666"/>
+	<rect x="-1" y="29" width="50" height="3" fill="#3f3f5f"/>
+	<rect x="-1" y="24" width="50" height="6" fill="#5a5374"/>
+	<rect x="-1" y="19" width="50" height="6" fill="#6e6382"/>
+	<rect x="-1" y="16" width="50" height="4" fill="#8c8197"/>
+	<rect x="-1" y="17" width="50" height="1" fill="#b5acb9"/>
+	<g transform="matrix(1 0 0 -1 0 48)" mask="url(#mask29)">
+		<rect x="30" y="-1" width="3" height="23" fill="#33334c"/>
+		<rect x="28" y="-1" width="3" height="23" fill="#3f3f5f"/>
+		<rect x="23" y="-1" width="6" height="23" fill="#5a5374"/>
+		<rect x="18" y="-1" width="6" height="23" fill="#6e6382"/>
+		<rect x="16" y="-1" width="3" height="23" fill="#8c8197"/>
+		<path d="m15-1.001h2v16l-2-3z" fill="#b5acb9"/>
 	</g>
-	<path transform="rotate(180,24,24)" d="m32.5 16.5c0.5 7-17.5 7-17 0 0-4 17-4 17 0" fill="none" mask="url(#mask2)" stroke="#0d0d0d" stroke-linecap="round" stroke-width="1.021"/>
+	<path transform="matrix(1,0,0,-1,0,47.76)" d="m33 16.5c0 7-18 7-18 0 0-5 18-5 18 0" fill="none" mask="url(#mask2)" stroke="url(#linearGradient1)" stroke-linecap="round" stroke-width="2.021"/>
 </svg>
