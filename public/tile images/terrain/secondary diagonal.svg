@@ -17,4 +17,12 @@
 		<path d="m12-1h13l-13 13z" fill="#ffffab" fill-opacity=".18"/>
 		<path d="m25-1v13h-13z" fill="#7c574b"/>
 	</g>
+	<rect x="-1" y="12" width="13" height="13" fill="#b38d62"/>
+	<rect x="9" y="13" width="3" height="12" fill="#967759"/>
+	<ellipse cy="16" rx="7" ry="3" fill="#0d912c"/>
+	<ellipse transform="rotate(8.213)" cx="10.37" cy="14.88" rx="7" ry="3" fill="#0d912c"/>
+	<ellipse cy="14" rx="7" ry="3" fill="#49c730"/>
+	<ellipse transform="rotate(8.213)" cx="10.09" cy="12.9" rx="7" ry="3" fill="#49c730"/>
+	<ellipse cy="12" rx="7" ry="3" fill="#bff542"/>
+	<ellipse transform="rotate(8.213)" cx="9.804" cy="10.92" rx="7" ry="3" fill="#bff542"/>
 </svg>

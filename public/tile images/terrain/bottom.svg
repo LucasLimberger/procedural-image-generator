@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-<svg version="1.1" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
-	<g>
-		<rect x="-1" y="-1" width="10" height="10" fill="#946651"/>
-		<path d="m-4 2c1.333 0 2.667-0.6667 4-0.6667 1.333 0 2.667 0.6666 4 0.6666s2.667-0.6667 4-0.6667c1.333 0 2.667 0.6666 4 0.6666v4c-1.333 0-2.667-0.6667-4-0.6667-1.333 0-2.667 0.6666-4 0.6666s-2.667-0.6667-4-0.6667c-1.333 0-2.667 0.6666-4 0.6666z" fill="#b38d62"/>
-	</g>
-	<rect x="-1" y="7" width="10" height="2" fill="#7c574b"/>
+<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<rect x="-1" y="-1" width="26" height="26" fill="#1a364e"/>
+	<rect x="-1" y="-1" width="26" height="13" fill="#946651"/>
+	<path d="m-6-9c4 0 8-2 12-2s8 2 12 2 8-2 12-2v12c-4 0-8 2-12 2s-8-2-12-2-8 2-12 2z" fill="#b38d62"/>
+	<rect x="-1" y="9" width="26" height="3" fill="#7c574b"/>
 </svg>

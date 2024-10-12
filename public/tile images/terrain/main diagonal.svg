@@ -6,14 +6,20 @@
 			<rect x="-1" y="-1" width="13" height="13" fill="#fff"/>
 		</mask>
 		<mask id="mask19" maskUnits="userSpaceOnUse">
-			<g>
-				<rect x="-3" y="-3" width="15" height="15" rx="2" fill="#fff"/>
-				<rect x="-3" y="-3" width="12" height="12" rx=".5"/>
-			</g>
+			<rect x="-3" y="-3" width="15" height="15" rx="2" fill="#fff"/>
+			<rect x="-3" y="-3" width="12" height="12" rx=".5"/>
 		</mask>
 	</defs>
 	<rect x="-1" y="-1" width="26" height="26" fill="#1a364e"/>
 	<rect x="-3" y="-3" width="15" height="15" rx="2" fill="#946651"/>
 	<path d="m-6-9c4 0 8-2 12-2s8 2 12 2 8-2 12-2v12c-4 0-8 2-12 2s-8-2-12-2-8 2-12 2z" fill="#b38d62" mask="url(#mask3)"/>
 	<rect x="-3" y="-3" width="15" height="15" fill="#111134" fill-opacity=".1804" mask="url(#mask19)"/>
+	<rect x="12.09" y="12" width="13" height="13" fill="#b38d62"/>
+	<rect x="12.09" y="12" width="3" height="13" fill="#ffffab" fill-opacity=".18"/>
+	<ellipse transform="rotate(-8.213)" cx="13.47" cy="18.32" rx="7" ry="3" fill="#0d912c"/>
+	<ellipse cx="24.09" cy="16" rx="7" ry="3" fill="#0d912c"/>
+	<ellipse transform="rotate(-8.213)" cx="13.75" cy="16.34" rx="7" ry="3" fill="#49c730"/>
+	<ellipse cx="24.09" cy="14" rx="7" ry="3" fill="#49c730"/>
+	<ellipse transform="rotate(-8.213)" cx="14.04" cy="14.36" rx="7" ry="3" fill="#bff542"/>
+	<ellipse cx="24.09" cy="12" rx="7" ry="3" fill="#bff542"/>
 </svg>

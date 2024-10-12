@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-<svg version="1.1" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
-	<g>
-		<rect x="-1" y="-1" width="10" height="10" fill="#946651"/>
-		<path d="m-4 2c1.333 0 2.667-0.6667 4-0.6667 1.333 0 2.667 0.6666 4 0.6666s2.667-0.6667 4-0.6667c1.333 0 2.667 0.6666 4 0.6666v4c-1.333 0-2.667-0.6667-4-0.6667-1.333 0-2.667 0.6666-4 0.6666s-2.667-0.6667-4-0.6667c-1.333 0-2.667 0.6666-4 0.6666z" fill="#b38d62"/>
-	</g>
-	<rect x="-1" y="-1" width="2" height="10" fill="#ffffab" fill-opacity=".18"/>
-	<g>
-		<path transform="translate(0,-16)" d="m-4 15h16v4.5c-1.333 0-2.667-0.6667-4-0.6667-1.333 0-2.667 0.6666-4 0.6666s-2.667-0.6667-4-0.6667c-1.333 0-2.667 0.6666-4 0.6666z" fill="#0da132"/>
-		<path transform="translate(0,-16)" d="m-4 15h16v3.5c-1.333 0-2.667-0.6667-4-0.6667-1.333 0-2.667 0.6666-4 0.6666s-2.667-0.6667-4-0.6667c-1.333 0-2.667 0.6666-4 0.6666z" fill="#49c730"/>
-		<rect x="-1" y="-1" width="10" height="2" fill="#bff542"/>
-	</g>
+<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<rect x="-1" y="-1" width="26" height="26" fill="#1a364e"/>
+	<rect x="12" y="12" width="13" height="13" fill="#b38d62"/>
+	<rect x="12" y="12" width="3" height="13" fill="#c1a26e"/>
+	<ellipse transform="rotate(-8.213)" cx="13.38" cy="18.31" rx="7" ry="3" fill="#0d912c"/>
+	<ellipse cx="24" cy="16" rx="7" ry="3" fill="#0d912c"/>
+	<ellipse transform="rotate(-8.213)" cx="13.66" cy="16.33" rx="7" ry="3" fill="#49c730"/>
+	<ellipse cx="24" cy="14" rx="7" ry="3" fill="#49c730"/>
+	<ellipse transform="rotate(-8.213)" cx="13.95" cy="14.35" rx="7" ry="3" fill="#bff542"/>
+	<ellipse cx="24" cy="12" rx="7" ry="3" fill="#bff542"/>
 </svg>
