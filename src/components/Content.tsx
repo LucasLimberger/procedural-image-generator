@@ -10,7 +10,6 @@ import WaveFunctionCollapseGrid from "../scripts/WaveFunctionCollapseGrid";
 import { TILESETS, TilesetName } from "../data/tileData";
 
 export default function Content() {
-  const intervalDuration = 100;
   const [paused, setPaused] = useState(true);
   const [stepsTaken, setStepsTaken] = useState(0);
   const [settings, setSettings] = useState({
@@ -26,6 +25,8 @@ export default function Content() {
       TILESETS[settings.activeTileset]
     )
   );
+  const gridSize = settings.gridWidth * settings.gridHeight;
+  const intervalDuration = Math.min(500, 5000 / gridSize);
 
   if (settings.skipAnimation && !paused) {
     while (!wfcg.isDone) {
