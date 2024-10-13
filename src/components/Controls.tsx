@@ -66,7 +66,7 @@ export default function Controls({
       <NumericInput
         name={languageStrings.gridWidthSettingName}
         labelContent={languageStrings.gridWidthSettingLabel}
-        value={gridWidth}
+        defaultValue={gridWidth}
         min={1}
         max={25}
         onChange={onWidthChange}
@@ -74,7 +74,7 @@ export default function Controls({
       <NumericInput
         name={languageStrings.gridHeightSettingName}
         labelContent={languageStrings.gridHeightSettingLabel}
-        value={gridHeight}
+        defaultValue={gridHeight}
         min={1}
         max={25}
         onChange={onHeightChange}

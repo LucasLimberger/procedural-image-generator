@@ -6,7 +6,7 @@ import { useId, useRef } from "react";
 interface NumericInputProps {
   labelContent?: React.ReactNode;
   name: string;
-  value: number;
+  defaultValue: number;
   min?: number;
   max?: number;
   step?: number;
@@ -19,23 +19,30 @@ export default function NumericInput({
   ...inputsProps
 }: NumericInputProps) {
   const id = useId();
-  const prevValue = useRef(inputsProps.value);
+  const prevValue = useRef(inputsProps.defaultValue);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const newValue = adjustedNumberInput(e);
-    if (newValue != prevValue.current) {
+    const newValue = adjustedNumberInput(e.target);
+    if (newValue !== prevValue.current) {
       prevValue.current = newValue;
       onChange(newValue);
     }
   }
 
-  function adjustedNumberInput(e: React.ChangeEvent<HTMLInputElement>) {
-    const min = Number(e.target.min || -Infinity);
-    const max = Number(e.target.max || Infinity);
-    const step = Number(e.target.step || 1);
-    let value = Number(e.target.value);
-    value = Math.round((value - min) / step) * step + min;
-    return Math.min(max, Math.max(min, value));
+  function adjustedNumberInput(inputElement: HTMLInputElement) {
+    const value = Number(inputElement.value);
+    if (inputElement.value === "" || isNaN(value)) {
+      return prevValue.current;
+    }
+    const min = Number(inputElement.min || -Infinity);
+    const max = Number(inputElement.max || Infinity);
+    const step = Number(inputElement.step || 1);
+    const roundedValue = Math.round((value - min) / step) * step + min;
+    return Math.min(max, Math.max(min, roundedValue));
+  }
+
+  function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
+    e.target.value = prevValue.current.toString();
   }
 
   return (
@@ -47,6 +54,7 @@ export default function NumericInput({
         type="number"
         {...inputsProps}
         onChange={handleChange}
+        onBlur={handleBlur}
       />
     </label>
   );
