@@ -16,10 +16,10 @@ const STRINGS = {
     pauseButtonDescription: "Pause",
     rerunButtonDescription: "Restart",
     skipAnimationSettingName: "Skip Animation",
-    gridWidthSettingName: "Width",
-    gridWidthSettingLabel: "Grid width",
-    gridHeightSettingName: "Height",
-    gridHeightSettingLabel: "Grid height",
+    gridWidthSettingName: "Grid Width",
+    gridWidthSettingLabel: "Width",
+    gridHeightSettingName: "Grid height",
+    gridHeightSettingLabel: "Height",
   },
 } as const;
 export default STRINGS;
