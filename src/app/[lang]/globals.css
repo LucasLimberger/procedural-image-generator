@@ -21,6 +21,7 @@
   height: 100dvh;
   color: var(--text-primary-clr);
 }
+
 body {
   height: 100%;
   display: grid;

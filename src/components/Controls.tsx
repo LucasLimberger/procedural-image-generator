@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Controls.module.css";
-import { useLanguageContext } from "@/custom hooks/customHooks";
+import { useLocaleStrings } from "@/custom hooks/customHooks";
 import Switch from "./Switch";
 import NumericInput from "./NumericInput";
 import Image from "next/image";
@@ -27,7 +27,7 @@ export default function Controls({
   onHeightChange,
   onPlayPause: onRerunRequest,
 }: ControlsProps) {
-  const languageStrings = useLanguageContext();
+  const languageStrings = useLocaleStrings();
 
   let playButtonSrc: string;
   let playButtonAlt: string;

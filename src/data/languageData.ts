@@ -22,4 +22,11 @@ const STRINGS = {
     gridHeightSettingLabel: "Height",
   },
 } as const;
+
 export default STRINGS;
+
+export type SupportedLocale = keyof typeof STRINGS;
+export const SUPPORTED_LOCALES = Object.keys(
+  STRINGS
+) as readonly SupportedLocale[];
+export const DEFAULT_LOCALE: SupportedLocale = "pt";

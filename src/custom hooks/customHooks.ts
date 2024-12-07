@@ -1,13 +1,13 @@
 "use client";
 
 import { useContext } from "react";
-import { LanguageContext } from "@/components/LanguageContextProvider";
+import { localeContext } from "@/components/LocaleProvider";
 import STRINGS from "@/data/languageData";
 
 /**
- * @returns as strings da língua que o provedor de contexto de idioma fornece.
+ * @returns as strings do locale fornescido pelo provedor de contexto de locales.
  */
-export function useLanguageContext() {
-  const language = useContext(LanguageContext);
-  return STRINGS[language];
+export function useLocaleStrings() {
+  const locale = useContext(localeContext);
+  return STRINGS[locale];
 }

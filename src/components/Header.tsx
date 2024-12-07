@@ -1,10 +1,10 @@
 "use client";
 
 import styles from "./Header.module.css";
-import { useLanguageContext } from "@/custom hooks/customHooks";
+import { useLocaleStrings } from "@/custom hooks/customHooks";
 
 export default function Header() {
-  const { title } = useLanguageContext();
+  const { title } = useLocaleStrings();
   return (
     <>
       <title>{title}</title>
