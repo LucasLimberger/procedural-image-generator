@@ -7,7 +7,7 @@ import STRINGS from "@/data/languageData";
 /**
  * @returns as strings do locale fornescido pelo provedor de contexto de locales.
  */
-export function useLocaleStrings() {
+export default function useLocaleStrings() {
   const locale = useContext(localeContext);
   return STRINGS[locale];
 }

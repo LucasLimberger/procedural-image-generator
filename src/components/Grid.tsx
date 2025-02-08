@@ -3,11 +3,12 @@ import { memo } from "react";
 import Image from "next/image";
 import { type Cell } from "../scripts/WaveFunctionCollapseGrid";
 import { TilesetName } from "../data/tileData";
+import { log } from "console";
 
 interface GridProps {
   width: number;
   height: number;
-  cells: Iterable<Cell<string>>;
+  cells: Cell<string>[];
   tilesetName: TilesetName;
 }
 
@@ -18,7 +19,7 @@ export default function Grid({ width, height, cells, tilesetName }: GridProps) {
         className={styles.grid}
         style={{ "--rows": height, "--columns": width } as React.CSSProperties}
       >
-        {[...cells].map(cell => (
+        {cells.map(cell => (
           <GridCell
             key={`${cell.x},${cell.y}`}
             tilesetName={tilesetName}

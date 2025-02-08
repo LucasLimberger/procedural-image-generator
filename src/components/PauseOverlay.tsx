@@ -2,7 +2,7 @@
 
 import styles from "./PauseOverlay.module.css";
 import { memo } from "react";
-import { useLocaleStrings } from "@/custom hooks/customHooks";
+import useLocaleStrings from "@/custom hooks/useLocaleStrings";
 import Image from "next/image";
 
 interface PauseOverlayProps {

@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Controls.module.css";
-import { useLocaleStrings } from "@/custom hooks/customHooks";
+import useLocaleStrings from "@/custom hooks/useLocaleStrings";
 import Switch from "./Switch";
 import NumericInput from "./NumericInput";
 import Image from "next/image";
@@ -14,7 +14,7 @@ interface ControlsProps {
   onWidthChange: (newWidth: number) => void;
   onHeightChange: (newHeight: number) => void;
   onAnimationModeChange: (skipAnimation: boolean) => void;
-  onPlayPause: () => void;
+  onPlayPauseRestart: () => void;
 }
 
 export default function Controls({
@@ -25,7 +25,7 @@ export default function Controls({
   onAnimationModeChange,
   onWidthChange,
   onHeightChange,
-  onPlayPause: onRerunRequest,
+  onPlayPauseRestart,
 }: ControlsProps) {
   const languageStrings = useLocaleStrings();
 
@@ -48,7 +48,7 @@ export default function Controls({
 
   return (
     <div className={styles.controls}>
-      <button className={playButtonClassName} onClick={() => onRerunRequest()}>
+      <button className={playButtonClassName} onClick={onPlayPauseRestart}>
         <Image
           fill
           className={styles.buttonIcon}

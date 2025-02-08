@@ -1,88 +1,24 @@
 "use client";
 
 import styles from "./Content.module.css";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
+import useTileGridGenerator from "@/custom hooks/useTileGridGenerator";
 import Controls from "./Controls";
 import TilesetSelector from "./TilesetSelector";
 import Grid from "./Grid";
 import PauseOverlay from "./PauseOverlay";
-import WaveFunctionCollapseGrid from "../scripts/WaveFunctionCollapseGrid";
-import { TILESETS, TilesetName } from "../data/tileData";
 
 export default function Content() {
-  const [paused, setPaused] = useState(true);
-  const [stepsTaken, setStepsTaken] = useState(0);
-  const [settings, setSettings] = useState({
-    activeTileset: "terrain" as TilesetName,
-    gridWidth: 10,
-    gridHeight: 10,
-    skipAnimation: false,
-  });
-  const [wfcg, setWfcg] = useState(
-    new WaveFunctionCollapseGrid(
-      settings.gridWidth,
-      settings.gridHeight,
-      TILESETS[settings.activeTileset]
-    )
-  );
-  const gridSize = settings.gridWidth * settings.gridHeight;
-  const intervalDuration = Math.min(500, 5000 / gridSize);
+  const [cells, state, stepsTaken, restart, settings, updateSettings] =
+    useTileGridGenerator();
 
-  if (settings.skipAnimation && !paused) {
-    while (!wfcg.isDone) {
-      wfcg.step();
-      setStepsTaken(prev => prev + 1);
-    }
-  }
-
-  let animationState: "done" | "running" | "paused";
-  if (wfcg.isDone) animationState = "done";
-  else if (paused) animationState = "paused";
-  else animationState = "running";
-
-  useEffect(() => {
-    if (animationState !== "running" || settings.skipAnimation) return;
-    const interval = setInterval(() => {
-      wfcg.step();
-      setStepsTaken(prev => prev + 1);
-    }, intervalDuration);
-    return () => clearInterval(interval);
-  }, [wfcg, animationState, settings.skipAnimation, intervalDuration]);
-
-  const handleTilesetChange = useCallback((newTileset: TilesetName) => {
-    setSettings(prev => ({ ...prev, activeTileset: newTileset }));
-    setStepsTaken(0);
-    setWfcg(
-      prev =>
-        new WaveFunctionCollapseGrid(
-          prev.width,
-          prev.height,
-          TILESETS[newTileset]
-        )
-    );
-  }, []);
-
-  function handlePlayPause() {
-    if (wfcg.isDone) {
-      wfcg.clear();
-      setStepsTaken(0);
+  const handlePlayPauseRestart = useCallback(() => {
+    if (state === "done") {
+      restart();
     } else {
-      setPaused(prev => !prev);
+      updateSettings({ paused: state !== "paused" });
     }
-  }
-  function handleWidthChange(newWidth: number) {
-    setSettings(prev => ({ ...prev, gridWidth: newWidth }));
-    wfcg.resizeAndClear(newWidth, settings.gridHeight);
-    setStepsTaken(0);
-  }
-  function handleHeightChange(newHeight: number) {
-    setSettings(prev => ({ ...prev, gridHeight: newHeight }));
-    wfcg.resizeAndClear(settings.gridWidth, newHeight);
-    setStepsTaken(0);
-  }
-  function handleAnimationModeChange(skipAnimation: boolean) {
-    setSettings(prev => ({ ...prev, skipAnimation }));
-  }
+  }, [state, restart, updateSettings]);
 
   return (
     <main className={styles.main}>
@@ -90,24 +26,26 @@ export default function Content() {
         gridWidth={settings.gridWidth}
         gridHeight={settings.gridHeight}
         skipAnimation={settings.skipAnimation}
-        animationState={animationState}
-        onWidthChange={handleWidthChange}
-        onHeightChange={handleHeightChange}
-        onAnimationModeChange={handleAnimationModeChange}
-        onPlayPause={handlePlayPause}
+        animationState={state}
+        onWidthChange={newWidth => updateSettings({ gridWidth: newWidth })}
+        onHeightChange={newHeight => updateSettings({ gridHeight: newHeight })}
+        onAnimationModeChange={skipAnimation =>
+          updateSettings({ skipAnimation })
+        }
+        onPlayPauseRestart={handlePlayPauseRestart}
       />
       <section className={styles.contentSection}>
         <TilesetSelector
           value={settings.activeTileset}
-          onSelect={handleTilesetChange}
+          onSelect={newTileset => updateSettings({ activeTileset: newTileset })}
         />
         <Grid
           width={settings.gridWidth}
           height={settings.gridHeight}
-          cells={[...wfcg.iterCells()]}
+          cells={cells}
           tilesetName={settings.activeTileset}
         />
-        {paused && <PauseOverlay onDismiss={handlePlayPause} />}
+        {settings.paused && <PauseOverlay onDismiss={handlePlayPauseRestart} />}
       </section>
     </main>
   );
