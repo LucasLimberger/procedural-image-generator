@@ -57,12 +57,6 @@ export default function Controls({
           title={playButtonAlt}
         />
       </button>
-      <Switch
-        name={languageStrings.skipAnimationSettingName}
-        value={languageStrings.skipAnimationSettingName}
-        isOn={skipAnimation}
-        onChange={checked => onAnimationModeChange(checked)}
-      />
       <NumericInput
         name={languageStrings.gridWidthSettingName}
         labelContent={languageStrings.gridWidthSettingLabel}
@@ -78,6 +72,12 @@ export default function Controls({
         min={1}
         max={25}
         onChange={onHeightChange}
+      />
+      <Switch
+        name={languageStrings.skipAnimationSettingName}
+        value={languageStrings.skipAnimationSettingName}
+        isOn={skipAnimation}
+        onChange={checked => onAnimationModeChange(checked)}
       />
     </div>
   );

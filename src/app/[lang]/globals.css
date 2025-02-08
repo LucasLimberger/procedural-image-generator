@@ -17,8 +17,8 @@
 }
 
 :root {
-  width: max(100%, 25rem);
-  height: 100dvh;
+  width: max(100%, 30rem);
+  height: max(100dvh, 30rem);
   color: var(--text-primary-clr);
 }
 
