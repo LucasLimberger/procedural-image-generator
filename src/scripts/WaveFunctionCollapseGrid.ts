@@ -155,7 +155,7 @@ class WaveFunctionCollapseGrid<
 
     while (cellsToUpdate.size > 0) {
       //retira a primeira célula do set
-      const currentCell: Cell<TileName> = cellsToUpdate.values().next().value;
+      const currentCell = cellsToUpdate.values().next().value!;
       cellsToUpdate.delete(currentCell);
 
       const startingLength = currentCell.possibleStates.length;
