@@ -1,5 +1,6 @@
 .label {
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .checkbox {
