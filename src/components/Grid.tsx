@@ -3,7 +3,6 @@ import { memo } from "react";
 import Image from "next/image";
 import { type Cell } from "../scripts/WaveFunctionCollapseGrid";
 import { TilesetName } from "../data/tileData";
-import { log } from "console";
 
 interface GridProps {
   width: number;
@@ -41,8 +40,12 @@ const GridCell = memo(function GridCell({
   tileName,
 }: GridCellProps) {
   const tileSource = tileName === null ? "empty" : `${tilesetName}/${tileName}`;
+  const style = {
+    "--animation-delay-mult": Math.random(),
+  } as React.CSSProperties;
+
   return (
-    <div className={styles.gridCell}>
+    <div suppressHydrationWarning className={styles.gridCell} style={style}>
       <Image
         fill
         className={styles.tileImage}
