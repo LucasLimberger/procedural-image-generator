@@ -27,11 +27,11 @@
     /* remove transição de `translate` */
   }
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background-color: var(--neutral-clr);
   }
   &:focus-visible {
-    background-color: var(--neutral-clr);
     outline-color: var(--focus-outline-clr);
   }
   &:disabled {
