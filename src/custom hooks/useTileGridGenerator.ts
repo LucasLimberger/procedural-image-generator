@@ -84,11 +84,7 @@ export default function useTileGridGenerator() {
           mergedSettings.gridWidth !== prev.gridWidth ||
           mergedSettings.gridHeight !== prev.gridHeight
         ) {
-          setStepsTaken(0);
-          wfcg.resizeAndClear(
-            mergedSettings.gridWidth,
-            mergedSettings.gridHeight
-          );
+          wfcg.resize(mergedSettings.gridWidth, mergedSettings.gridHeight);
         }
 
         return mergedSettings;

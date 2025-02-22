@@ -56,7 +56,7 @@ class WaveFunctionCollapseGrid<
   private readonly nameToTile: Map<TileName, Tile<TileName>>;
   private collisionOcurred = false;
   private gridHistory: Cell<TileName>[][] = [];
-  private collapseHistory: Cell<TileName>[] = [];
+  private collapseHistory: (Cell<TileName> | null)[] = [];
   private get latestCollapse() {
     return this.collapseHistory.at(-1)!;
   }
@@ -85,7 +85,7 @@ class WaveFunctionCollapseGrid<
   step() {
     if (this._isDone) return;
     this.collapseRandomCell();
-    this.propagateChanges();
+    this.propagateChanges(this.latestCollapse);
     if (this.collisionOcurred) this.backtrack();
     this.saveGridToHistory();
     this._isDone = this.grid.every(cell => cell.isCollapsed);
@@ -111,6 +111,34 @@ class WaveFunctionCollapseGrid<
     this.saveGridToHistory();
   }
 
+  resize(newWidth: number, newHeight: number) {
+    const newGrid = Array<Cell<TileName>>(newWidth * newHeight);
+    const newCells: Cell<TileName>[] = [];
+    for (let y = 0; y < newHeight; y++) {
+      for (let x = 0; x < newWidth; x++) {
+        const gridIndex = y * newWidth + x;
+        let cell = this.getCellAtPosition(x, y);
+        if (cell === null) {
+          cell = new Cell(x, y, this.allTileNames.slice());
+          newCells.push(cell);
+        }
+        newGrid[gridIndex] = cell;
+      }
+    }
+
+    this.grid = newGrid;
+    this._width = newWidth;
+    this._height = newHeight;
+
+    this.collapseHistory.push(null); // null indica que a grade foi redimensionada
+    for (const cell of newCells) {
+      this.propagateChanges(cell);
+    }
+    if (this.collisionOcurred) this.backtrack();
+    this.saveGridToHistory();
+    this._isDone = this.grid.every(cell => cell.isCollapsed);
+  }
+
   resizeAndClear(newWidth: number, newHeight: number) {
     this._width = newWidth;
     this._height = newHeight;
@@ -127,7 +155,7 @@ class WaveFunctionCollapseGrid<
   }
 
   private collapseRandomCell() {
-    // A entropia de uma célula é a quantidade de estados possívveis dela
+    // A entropia de uma célula é a quantidade de estados possíveis dela
     const lowestEntropy = this.grid
       .filter(cell => !cell.isCollapsed)
       .reduce((a, b) => Math.min(a, b.possibleStates.length), Infinity);
@@ -146,15 +174,13 @@ class WaveFunctionCollapseGrid<
     }
   }
 
-  private propagateChanges() {
-    const startingCell = this.latestCollapse;
+  private propagateChanges(startingCell: Cell<TileName>) {
     const cellsToUpdate = new Set<Cell<TileName>>();
     for (const { neighbor } of this.getNeighboringCells(startingCell)) {
       if (!neighbor.isCollapsed) cellsToUpdate.add(neighbor);
     }
 
     while (cellsToUpdate.size > 0) {
-      //retira a primeira célula do set
       const currentCell = cellsToUpdate.values().next().value!;
       cellsToUpdate.delete(currentCell);
 
@@ -218,7 +244,7 @@ class WaveFunctionCollapseGrid<
 
   private getCellAtPosition(x: number, y: number) {
     if (x < 0 || x >= this._width || y < 0 || y >= this._height) return null;
-    return this.grid[y * this._width + x];
+    return this.grid[y * this._width + x] ?? null;
   }
   // prettier-ignore
   private static readonly adjacencies = [
@@ -233,12 +259,23 @@ class WaveFunctionCollapseGrid<
     if (this.gridHistory.length === 0) throw new Error("Impossible tileset");
 
     this.grid = this.gridHistory.pop()!;
-    const cellPicked = this.collapseHistory.pop()!;
+    const cellPicked = this.collapseHistory.pop() as Cell<TileName> | null;
 
+    if (cellPicked === null) {
+      // Um valor nulo indica que a grade foi redimensionada
+      const resizedWidth = this.width;
+      const resizedHeight = this.height;
+      const lastCell = this.grid.at(-1)!;
+      this._width = lastCell.x + 1;
+      this._height = lastCell.y + 1;
+      this.resize(resizedWidth, resizedHeight);
+      return;
+    }
+
+    // Remove o Tile que causou a colisão
     const tileNamePicked = cellPicked.collapsedState!;
     const recoveredCell = this.getCellAtPosition(cellPicked.x, cellPicked.y)!;
     removeTileFromPossibilities(recoveredCell, tileNamePicked);
-    // desconsidera o Tile que causou a colisão
 
     if (recoveredCell.possibleStates.length === 0) {
       this.backtrack();
