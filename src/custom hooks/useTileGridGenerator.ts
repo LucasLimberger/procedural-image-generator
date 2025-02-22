@@ -28,22 +28,11 @@ export default function useTileGridGenerator() {
     state = "running";
   }
 
-  // Limita a execução do algoritmo quando reiniciado 2+ vezes em seguida.
-  const [readyToSkipAnimation, setReadyToSkipAnimation] = useState(true);
-  useEffect(() => {
-    // Usando `interval` em vez de `timeout` para contornar o caso em que a
-    // dependência muda 2 vezes antes da próxima renderização.
-    if (readyToSkipAnimation) return;
-    const interval = setInterval(setReadyToSkipAnimation, 300, true);
-    return () => clearInterval(interval);
-  }, [readyToSkipAnimation]);
-
-  if (state === "running" && settings.skipAnimation && readyToSkipAnimation) {
+  if (state === "running" && settings.skipAnimation) {
     while (!wfcg.isDone) {
       wfcg.step();
       setStepsTaken(prev => prev + 1);
     }
-    setReadyToSkipAnimation(false);
     state = "done";
   }
 
