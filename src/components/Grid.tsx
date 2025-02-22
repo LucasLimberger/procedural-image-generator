@@ -42,6 +42,7 @@ const GridCell = memo(function GridCell({
   const tileSource = tileName === null ? "empty" : `${tilesetName}/${tileName}`;
   const style = {
     "--animation-delay-mult": Math.random(),
+    "--image-scale": tileName === null ? 0 : 1,
   } as React.CSSProperties;
 
   return (
