@@ -12,7 +12,9 @@
   --dark-neutral-clr: hsl(0 0% 5%);
   --text-primary-clr: hsl(0 0% 90%);
   --text-secondary-clr: hsl(0 0% 70%);
+
   --focus-outline-clr: hsl(240 70% 70%);
+  --background-stripes-clr: hsl(0 0% 7%);
   --semi-transparent-overlay-clr: hsl(0 0% 0% / 0.5);
 }
 

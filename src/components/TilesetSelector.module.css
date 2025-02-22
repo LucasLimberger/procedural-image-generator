@@ -1,11 +1,19 @@
 .tilesetSelector {
-  margin-right: 1rem;
+  padding-right: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   padding-block: 1rem;
+
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--dark-neutral-clr),
+    var(--dark-neutral-clr) 0.5rem,
+    var(--background-stripes-clr) 0.5rem,
+    var(--background-stripes-clr) 1rem
+  );
 }
 
 .tilesetOptionButton {
