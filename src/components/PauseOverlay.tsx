@@ -2,7 +2,7 @@
 
 import styles from "./PauseOverlay.module.css";
 import { memo } from "react";
-import useLocaleStrings from "@/custom hooks/useLocaleStrings";
+import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
 import Image from "next/image";
 
 interface PauseOverlayProps {
@@ -18,7 +18,7 @@ const PauseOverlay = memo(function PauseOverlay({
       <button className={styles.playButton} onClick={onDismiss}>
         <Image
           fill
-          src="./icons/play icon.svg"
+          src="icons/play-icon.svg"
           alt={playButtonDescription}
           title={playButtonDescription}
         />

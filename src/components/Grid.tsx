@@ -49,7 +49,7 @@ const GridCell = memo(function GridCell({
       <Image
         fill
         className={styles.tileImage}
-        src={`./tile images/${tileSource}.svg`}
+        src={`tile-images/${tileSource}.svg`}
         alt=""
       />
     </div>

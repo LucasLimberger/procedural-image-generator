@@ -2,7 +2,7 @@
 
 import styles from "./Content.module.css";
 import { useCallback } from "react";
-import useTileGridGenerator from "@/custom hooks/useTileGridGenerator";
+import useTileGridGenerator from "@/custom-hooks/useTileGridGenerator";
 import Controls from "./Controls";
 import TilesetSelector from "./TilesetSelector";
 import Grid from "./Grid";

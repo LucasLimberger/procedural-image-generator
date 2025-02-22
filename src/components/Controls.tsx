@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Controls.module.css";
-import useLocaleStrings from "@/custom hooks/useLocaleStrings";
+import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
 import Switch from "./Switch";
 import NumericInput from "./NumericInput";
 import Image from "next/image";
@@ -33,15 +33,15 @@ export default function Controls({
   let playButtonAlt: string;
   let playButtonClassName = styles.button + " ";
   if (animationState === "done") {
-    playButtonSrc = "restart icon";
+    playButtonSrc = "restart-icon";
     playButtonAlt = languageStrings.rerunButtonDescription;
     playButtonClassName += styles.restartButton;
   } else if (animationState === "running") {
-    playButtonSrc = "pause icon";
+    playButtonSrc = "pause-icon";
     playButtonAlt = languageStrings.pauseButtonDescription;
     playButtonClassName += styles.pauseButton;
   } else {
-    playButtonSrc = "play icon";
+    playButtonSrc = "play-icon";
     playButtonAlt = languageStrings.playButtonDescription;
     playButtonClassName += styles.playButton;
   }
@@ -52,7 +52,7 @@ export default function Controls({
         <Image
           fill
           className={styles.buttonIcon}
-          src={`./icons/${playButtonSrc}.svg`}
+          src={`icons/${playButtonSrc}.svg`}
           alt={playButtonAlt}
           title={playButtonAlt}
         />

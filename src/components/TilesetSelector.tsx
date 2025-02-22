@@ -39,7 +39,9 @@ const TilesetOption = memo(function TilesetOption({
   onSelect,
 }: TilesetOptionProps) {
   let buttonClasses = styles.tilesetOptionButton;
-  if (isSelected) buttonClasses += " " + styles.selected;
+  if (isSelected) {
+    buttonClasses += " " + styles.selected;
+  }
 
   return (
     <button
@@ -53,7 +55,7 @@ const TilesetOption = memo(function TilesetOption({
         <Image
           className={styles.image}
           fill
-          src={`./tileset images/${tilesetName}.svg`}
+          src={`tileset-images/${tilesetName}.svg`}
           alt=""
         />
       </div>
