@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import { type SupportedLocale } from "@/data/languageData";
-import LocaleProvider from "@/components/LocaleProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -19,9 +18,7 @@ export default function RootLayout({
 }: RootLayoutProps) {
   return (
     <html lang={lang}>
-      <body className={roboto.className}>
-        <LocaleProvider value={lang}>{children}</LocaleProvider>
-      </body>
+      <body className={roboto.className}>{children}</body>
     </html>
   );
 }

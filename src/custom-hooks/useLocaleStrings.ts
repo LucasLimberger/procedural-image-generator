@@ -1,13 +1,13 @@
 "use client";
 
-import { useContext } from "react";
-import { localeContext } from "@/components/LocaleProvider";
-import STRINGS from "@/data/languageData";
+import { usePathname } from "next/navigation";
+import STRINGS, { type SupportedLocale } from "@/data/languageData";
 
 /**
- * @returns as strings do locale fornescido pelo provedor de contexto de locales.
+ * @returns as strings do locale atual
  */
 export default function useLocaleStrings() {
-  const locale = useContext(localeContext);
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1] as SupportedLocale;
   return STRINGS[locale];
 }
