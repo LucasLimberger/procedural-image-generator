@@ -15,5 +15,5 @@
 	<rect x="-1" y="-1" width="26" height="26" fill="#1a364e"/>
 	<rect x="-3" y="-3" width="15" height="15" rx="2" fill="#946651"/>
 	<path d="m-6-9c4 0 8-2 12-2s8 2 12 2 8-2 12-2v12c-4 0-8 2-12 2s-8-2-12-2-8 2-12 2z" fill="#b38d62" mask="url(#mask3)"/>
-	<rect x="-3" y="-3" width="15" height="15" fill="#111134" fill-opacity=".1804" mask="url(#mask19)"/>
+	<rect x="-3" y="-3" width="15" height="15" fill="#111134" fill-opacity=".18" mask="url(#mask19)"/>
 </svg>

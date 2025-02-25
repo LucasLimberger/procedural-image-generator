@@ -20,8 +20,8 @@
 		<rect x="-1" y="-1" width="26" height="26" fill="#b38d62"/>
 		<path d="m-6 3c4 0 8-2 12-2s8 2 12 2 8-2 12-2v12c-4 0-8 2-12 2s-8-2-12-2-8 2-12 2z" fill="#946651" mask="none"/>
 	</g>
-	<g fill-opacity=".1804" mask="url(#mask15)">
-		<path d="m-1 9h16l-16 16z" fill="#111134" stroke-linecap="round"/>
+	<g fill-opacity=".18" mask="url(#mask15)">
+		<path d="m-1 9h16l-16 16z" fill="#111134"/>
 		<path d="m15 9v16h-16z" fill="#ffffab" mask="none"/>
 	</g>
 </svg>
