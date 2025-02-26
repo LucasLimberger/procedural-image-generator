@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="24" height="24" version="1.1" viewBox="0 0 6.35 6.35" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<mask id="mask1" maskUnits="userSpaceOnUse">
+			<circle cx="2.117" cy="2.117" r="1.852" fill="#fff"/>
+		</mask>
+	</defs>
+	<g transform="matrix(1.714 0 0 1.714 -.4536 -.4536)" fill="none" mask="url(#mask1)" stroke="#e6e6e6" stroke-width=".3473">
+		<path d="m3.969 1.402a1.852 0.1543 0 0 1-0.926 0.1337 1.852 0.1543 0 0 1-1.852 0 1.852 0.1543 0 0 1-0.926-0.1337"/>
+		<path d="m0.2646 2.844a1.852 0.1543 0 0 1 1.852-0.1543 1.852 0.1543 0 0 1 1.852 0.1543"/>
+		<path transform="rotate(90)" d="m3.907-2.382a1.79 0.926 0 0 1-0.8952 0.802 1.79 0.926 0 0 1-1.79 0 1.79 0.926 0 0 1-0.8952-0.802"/>
+		<path transform="rotate(90)" d="m0.3263-1.852a1.79 0.926 0 0 1 0.8952-0.802 1.79 0.926 0 0 1 1.79 0 1.79 0.926 0 0 1 0.8952 0.802"/>
+	</g>
+	<circle cx="3.175" cy="3.175" r="2.877" fill="none" stroke="#e6e6e6" stroke-linecap="square" stroke-width=".5953"/>
+</svg>

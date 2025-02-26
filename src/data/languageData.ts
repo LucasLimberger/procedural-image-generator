@@ -1,5 +1,6 @@
 const STRINGS = {
   pt: {
+    localeName: "Português",
     title: "placeholder-pt-title",
     playButtonDescription: "Iniciar",
     pauseButtonDescription: "Pausar",
@@ -11,6 +12,7 @@ const STRINGS = {
     gridHeightSettingLabel: "Altura",
   },
   en: {
+    localeName: "English",
     title: "placeholder-en-title",
     playButtonDescription: "Start",
     pauseButtonDescription: "Pause",
