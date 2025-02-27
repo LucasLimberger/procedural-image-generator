@@ -38,14 +38,14 @@ const TilesetOption = memo(function TilesetOption({
   isSelected,
   onSelect,
 }: TilesetOptionProps) {
-  let buttonClasses = styles.tilesetOptionButton;
+  let buttonClassName = styles.tilesetOptionButton;
   if (isSelected) {
-    buttonClasses += " " + styles.selected;
+    buttonClassName += " " + styles.selected;
   }
 
   return (
     <button
-      className={buttonClasses}
+      className={buttonClassName}
       disabled={isSelected}
       onClick={() => {
         onSelect(tilesetName);

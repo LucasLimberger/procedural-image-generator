@@ -25,9 +25,9 @@
   margin-left: 0.5rem;
   padding: 0.25rem 0.25rem 0.25rem 0.5rem;
 
-  border: none;
   border-radius: 0.25rem;
   background-color: var(--text-primary-clr);
+  border: none;
   outline: transparent 0.125rem solid;
   outline-offset: 1px;
   color: var(--dark-neutral-clr);

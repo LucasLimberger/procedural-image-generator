@@ -35,17 +35,28 @@ export default function Content() {
         onPlayPauseRestart={handlePlayPauseRestart}
       />
       <section className={styles.contentSection}>
+        <div className={styles.stripedBackground}>
         <TilesetSelector
           value={settings.activeTileset}
-          onSelect={newTileset => updateSettings({ activeTileset: newTileset })}
+            onSelect={newTileset =>
+              updateSettings({ activeTileset: newTileset })
+            }
         />
+        </div>
+        <div className={styles.gridContainer}>
         <Grid
           width={settings.gridWidth}
           height={settings.gridHeight}
           cells={cells}
           tilesetName={settings.activeTileset}
         />
-        {settings.paused && <PauseOverlay onDismiss={handlePlayPauseRestart} />}
+        </div>
+        <div className={styles.stripedBackground} />
+        {settings.paused && (
+          <div className={styles.pauseOverlayContainer}>
+            <PauseOverlay onDismiss={handlePlayPauseRestart} />
+          </div>
+        )}
       </section>
     </main>
   );

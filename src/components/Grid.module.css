@@ -9,24 +9,19 @@
 
 .grid {
   display: grid;
-  --padding-inline: 1rem;
-  --padding-block: 1rem;
-  --tile-size: min(
-    calc((100cqw - 2 * var(--padding-inline)) / var(--columns)),
-    ((100cqh - 2 * var(--padding-block)) / var(--rows))
-  );
+  --tile-size: min(100cqw / var(--columns), 100cqh / var(--rows));
   grid-template-rows: repeat(var(--rows), var(--tile-size));
   grid-template-columns: repeat(var(--columns), var(--tile-size));
 }
 
 .gridCell {
-  background-image: url("../../public/grid-cell-background.svg");
   position: relative;
-  opacity: 0;
-  translate: 0 1rem;
+  background-image: url("../../public/grid-cell-background.svg");
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: 0.5s ease-out forwards fade-in;
+    opacity: 0;
+    translate: 0 1rem;
+    animation: fade-in 0.5s ease-out forwards;
     animation-delay: calc(var(--animation-delay-mult) * 300ms);
     /* Atraso máximo de 300ms */
   }
