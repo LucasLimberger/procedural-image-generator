@@ -20,7 +20,7 @@ export default function LanguageSelector() {
   );
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.languageSelector}>
       <button
         className={styles.button}
         onClick={() => setPopupVisible(prev => !prev)}

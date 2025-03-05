@@ -1,3 +1,8 @@
+.languageSelector {
+  position: relative;
+  height: 100%;
+}
+
 .button {
   height: 100%;
   display: flex;
@@ -30,12 +35,7 @@
 .imageWrapper {
   position: relative;
   aspect-ratio: 1;
-  height: 100%;
-}
-
-.wrapper {
-  position: relative;
-  height: 100%;
+  width: 1.375rem;
 }
 
 .popupMenu {
