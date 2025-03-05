@@ -30,31 +30,35 @@ export default function Controls({
   const languageStrings = useLocaleStrings();
 
   let playButtonSrc: string;
-  let playButtonAlt: string;
+  let playButtonDescription: string;
   let playButtonClassName = styles.button + " ";
   if (animationState === "done") {
     playButtonSrc = "restart-icon";
-    playButtonAlt = languageStrings.rerunButtonDescription;
+    playButtonDescription = languageStrings.rerunButtonDescription;
     playButtonClassName += styles.restartButton;
   } else if (animationState === "running") {
     playButtonSrc = "pause-icon";
-    playButtonAlt = languageStrings.pauseButtonDescription;
+    playButtonDescription = languageStrings.pauseButtonDescription;
     playButtonClassName += styles.pauseButton;
   } else {
     playButtonSrc = "play-icon";
-    playButtonAlt = languageStrings.playButtonDescription;
+    playButtonDescription = languageStrings.playButtonDescription;
     playButtonClassName += styles.playButton;
   }
 
   return (
     <div className={styles.controls}>
-      <button className={playButtonClassName} onClick={onPlayPauseRestart}>
+      <button
+        className={playButtonClassName}
+        onClick={onPlayPauseRestart}
+        aria-label={playButtonDescription}
+      >
         <Image
           fill
           className={styles.buttonIcon}
           src={`icons/${playButtonSrc}.svg`}
-          alt={playButtonAlt}
-          title={playButtonAlt}
+          alt={playButtonDescription}
+          title={playButtonDescription}
         />
       </button>
       <NumericInput

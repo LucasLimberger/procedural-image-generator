@@ -1,6 +1,9 @@
+"use client";
+
 import styles from "./TilesetSelector.module.css";
 import { memo } from "react";
 import Image from "next/image";
+import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
 import { TILESETS, TilesetName } from "@/data/tileData";
 
 interface TilesetSelectorProps {
@@ -38,6 +41,8 @@ const TilesetOption = memo(function TilesetOption({
   isSelected,
   onSelect,
 }: TilesetOptionProps) {
+  const { tilesetChangeLabel } = useLocaleStrings();
+
   let buttonClassName = styles.tilesetOptionButton;
   if (isSelected) {
     buttonClassName += " " + styles.selected;
@@ -47,6 +52,7 @@ const TilesetOption = memo(function TilesetOption({
     <button
       className={buttonClassName}
       disabled={isSelected}
+      aria-label={tilesetChangeLabel}
       onClick={() => {
         onSelect(tilesetName);
       }}

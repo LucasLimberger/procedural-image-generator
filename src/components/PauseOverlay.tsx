@@ -15,7 +15,11 @@ const PauseOverlay = memo(function PauseOverlay({
   const { playButtonDescription } = useLocaleStrings();
   return (
     <div className={styles.backdrop}>
-      <button className={styles.playButton} onClick={onDismiss}>
+      <button
+        className={styles.playButton}
+        onClick={onDismiss}
+        aria-label={playButtonDescription}
+      >
         <Image
           fill
           src="icons/play-icon.svg"

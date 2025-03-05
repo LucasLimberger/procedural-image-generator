@@ -10,6 +10,7 @@ const STRINGS = {
     gridWidthSettingLabel: "Largura",
     gridHeightSettingName: "Altura da grade",
     gridHeightSettingLabel: "Altura",
+    tilesetChangeLabel: "Mudar conjunto de imagens",
   },
   en: {
     localeName: "English",
@@ -22,6 +23,7 @@ const STRINGS = {
     gridWidthSettingLabel: "Width",
     gridHeightSettingName: "Grid height",
     gridHeightSettingLabel: "Height",
+    tilesetChangeLabel: "Change tileset",
   },
 } as const;
 
