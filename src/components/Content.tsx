@@ -9,7 +9,7 @@ import Grid from "./Grid";
 import PauseOverlay from "./PauseOverlay";
 
 export default function Content() {
-  const [cells, state, stepsTaken, restart, settings, updateSettings] =
+  const { cells, state, restart, settings, updateSettings } =
     useTileGridGenerator();
 
   const handlePlayPauseRestart = useCallback(() => {
@@ -36,24 +36,24 @@ export default function Content() {
       />
       <section className={styles.contentSection}>
         <div className={styles.stripedBackground}>
-        <TilesetSelector
-          value={settings.activeTileset}
+          <TilesetSelector
+            value={settings.activeTileset}
             onSelect={newTileset =>
               updateSettings({ activeTileset: newTileset })
             }
-        />
+          />
         </div>
-        <div className={styles.gridContainer}>
-        <Grid
-          width={settings.gridWidth}
-          height={settings.gridHeight}
-          cells={cells}
-          tilesetName={settings.activeTileset}
-        />
+        <div className={styles.gridWrapper}>
+          <Grid
+            width={settings.gridWidth}
+            height={settings.gridHeight}
+            cells={cells}
+            tilesetName={settings.activeTileset}
+          />
         </div>
         <div className={styles.stripedBackground} />
         {settings.paused && (
-          <div className={styles.pauseOverlayContainer}>
+          <div className={styles.pauseOverlayWrapper}>
             <PauseOverlay onDismiss={handlePlayPauseRestart} />
           </div>
         )}

@@ -83,5 +83,12 @@ export default function useTileGridGenerator() {
   );
 
   const cells = [...wfcg.iterCells()];
-  return [cells, state, stepsTaken, restart, settings, updateSettings] as const;
+  return {
+    cells,
+    state,
+    stepsTaken,
+    restart,
+    settings,
+    updateSettings,
+  } as const;
 }

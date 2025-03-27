@@ -29,7 +29,7 @@
   overflow-y: hidden;
 }
 
-.pauseOverlayContainer {
+.pauseOverlayWrapper {
   position: absolute;
   grid-column: 1 / -1;
   width: 100%;
@@ -43,7 +43,7 @@
   .stripedBackground:last-child {
     display: none;
   }
-  .pauseOverlayContainer > * {
+  .pauseOverlayWrapper > * {
     padding-left: 8rem;
   }
 }
