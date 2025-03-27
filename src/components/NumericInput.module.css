@@ -35,6 +35,9 @@
 
   transition-property: background-color, outline-color;
   transition-duration: 200ms;
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
 
   &:hover,
   &:focus-visible {

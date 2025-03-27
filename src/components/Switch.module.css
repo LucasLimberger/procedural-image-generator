@@ -25,6 +25,9 @@
 
   transition-property: background-color, outline-color;
   transition-duration: 200ms;
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
 }
 
 .sliderTrack::before {
@@ -40,7 +43,7 @@
 
   transition: background-color 200ms, translate 150ms ease-in-out;
   @media (prefers-reduced-motion) {
-    transition: background-color 200ms;
+    transition: none;
   }
 }
 

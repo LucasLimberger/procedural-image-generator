@@ -22,8 +22,7 @@
   transition-property: background-color, outline-color, border-color, translate;
   transition-duration: 200ms;
   @media (prefers-reduced-motion) {
-    transition-property: background-color, outline-color, border-color;
-    /* remove transição de `translate` */
+    transition-property: none;
   }
 
   &:hover,
