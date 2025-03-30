@@ -2,8 +2,8 @@
 
 import styles from "./Controls.module.css";
 import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
-import Image from "next/image";
 import NumericInput from "./NumericInput";
+import PlayButton from "./PlayButton";
 import Switch from "./Switch";
 
 interface ControlsProps {
@@ -29,38 +29,12 @@ export default function Controls({
 }: ControlsProps) {
   const languageStrings = useLocaleStrings();
 
-  let playButtonSrc: string;
-  let playButtonDescription: string;
-  let playButtonClassName = styles.button + " ";
-  if (animationState === "done") {
-    playButtonSrc = "restart-icon";
-    playButtonDescription = languageStrings.rerunButtonDescription;
-    playButtonClassName += styles.restartButton;
-  } else if (animationState === "running") {
-    playButtonSrc = "pause-icon";
-    playButtonDescription = languageStrings.pauseButtonDescription;
-    playButtonClassName += styles.pauseButton;
-  } else {
-    playButtonSrc = "play-icon";
-    playButtonDescription = languageStrings.playButtonDescription;
-    playButtonClassName += styles.playButton;
-  }
-
   return (
     <div className={styles.controls}>
-      <button
-        className={playButtonClassName}
-        onClick={onPlayPauseRestart}
-        aria-label={playButtonDescription}
-      >
-        <Image
-          fill
-          className={styles.buttonIcon}
-          src={`icons/${playButtonSrc}.svg`}
-          alt={playButtonDescription}
-          title={playButtonDescription}
-        />
-      </button>
+      <PlayButton
+        animationState={animationState}
+        onPlayPauseRestart={onPlayPauseRestart}
+      />
       <NumericInput
         name={languageStrings.gridWidthSettingName}
         labelContent={languageStrings.gridWidthSettingLabel}
