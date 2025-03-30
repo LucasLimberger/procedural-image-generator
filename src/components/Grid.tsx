@@ -6,7 +6,7 @@ import Image from "next/image";
 interface Cell {
   readonly x: number;
   readonly y: number;
-  readonly collapsedState: string | null;
+  readonly value: string | null;
 }
 
 interface GridProps {
@@ -27,7 +27,7 @@ export default function Grid({ width, height, cells, tilesetName }: GridProps) {
           <GridCell
             key={`${cell.x},${cell.y}`}
             tilesetName={tilesetName}
-            tileName={cell.collapsedState ?? null}
+            tileName={cell.value}
           />
         ))}
       </div>

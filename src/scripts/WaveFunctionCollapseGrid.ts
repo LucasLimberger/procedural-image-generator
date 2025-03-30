@@ -11,7 +11,7 @@ class Cell<State extends string | number = string | number> {
   get isCollapsed() {
     return this.possibleStates.length === 1;
   }
-  get collapsedState() {
+  get value() {
     return this.isCollapsed ? this.possibleStates[0] : null;
   }
 }
@@ -273,7 +273,7 @@ class WaveFunctionCollapseGrid<
     }
 
     // Remove o Tile que causou a colisão
-    const tileNamePicked = cellPicked.collapsedState!;
+    const tileNamePicked = cellPicked.value!;
     const recoveredCell = this.getCellAtPosition(cellPicked.x, cellPicked.y)!;
     removeTileFromPossibilities(recoveredCell, tileNamePicked);
 
