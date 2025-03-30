@@ -1,13 +1,18 @@
 import styles from "./Grid.module.css";
 import { memo } from "react";
-import Image from "next/image";
-import { type Cell } from "../scripts/WaveFunctionCollapseGrid";
 import { TilesetName } from "../data/tileData";
+import Image from "next/image";
+
+interface Cell {
+  readonly x: number;
+  readonly y: number;
+  readonly collapsedState: string | null;
+}
 
 interface GridProps {
   width: number;
   height: number;
-  cells: Cell<string>[];
+  cells: readonly Cell[];
   tilesetName: TilesetName;
 }
 
