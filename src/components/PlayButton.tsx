@@ -42,7 +42,7 @@ export default function PlayButton({
         fill
         className={styles.buttonIcon}
         src={`icons/${playButtonSrc}.svg`}
-        alt={playButtonDescription}
+        alt=""
         title={playButtonDescription}
       />
     </button>

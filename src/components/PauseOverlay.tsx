@@ -23,7 +23,7 @@ const PauseOverlay = memo(function PauseOverlay({
         <Image
           fill
           src="icons/play-icon.svg"
-          alt={playButtonDescription}
+          alt=""
           title={playButtonDescription}
         />
       </button>
