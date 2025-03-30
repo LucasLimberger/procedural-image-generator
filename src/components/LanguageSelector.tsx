@@ -1,11 +1,11 @@
 "use client";
 
 import styles from "./LanguageSelector.module.css";
+import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
+import usePopupVisibility from "@/custom-hooks/usePopupVisibility";
+import STRINGS, { SUPPORTED_LOCALES } from "@/data/languageData";
 import Image from "next/image";
 import Link from "next/link";
-import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
-import STRINGS, { SUPPORTED_LOCALES } from "@/data/languageData";
-import usePopupVisibility from "@/custom-hooks/usePopupVisibility";
 
 export default function LanguageSelector() {
   const { popupRef, popupVisible, setPopupVisible } = usePopupVisibility(false);

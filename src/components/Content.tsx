@@ -4,8 +4,8 @@ import styles from "./Content.module.css";
 import { useCallback } from "react";
 import useTileGridGenerator from "@/custom-hooks/useTileGridGenerator";
 import Controls from "./Controls";
-import TilesetSelector from "./TilesetSelector";
 import Grid from "./Grid";
+import TilesetSelector from "./TilesetSelector";
 import PauseOverlay from "./PauseOverlay";
 
 export default function Content() {

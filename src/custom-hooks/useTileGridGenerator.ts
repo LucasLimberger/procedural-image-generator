@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import WaveFunctionCollapseGrid from "@/scripts/WaveFunctionCollapseGrid";
-import { TilesetName, TILESETS } from "@/data/tileData";
+import { TILESETS, type TilesetName } from "@/data/tileData";
 
 export default function useTileGridGenerator() {
   const [stepsTaken, setStepsTaken] = useState(0);

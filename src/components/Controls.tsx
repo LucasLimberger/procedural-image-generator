@@ -2,9 +2,9 @@
 
 import styles from "./Controls.module.css";
 import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
-import Switch from "./Switch";
-import NumericInput from "./NumericInput";
 import Image from "next/image";
+import NumericInput from "./NumericInput";
+import Switch from "./Switch";
 
 interface ControlsProps {
   gridWidth: number;

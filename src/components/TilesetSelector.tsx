@@ -2,9 +2,9 @@
 
 import styles from "./TilesetSelector.module.css";
 import { memo } from "react";
-import Image from "next/image";
 import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
-import { TILESETS, TilesetName } from "@/data/tileData";
+import { TILESETS, type TilesetName } from "@/data/tileData";
+import Image from "next/image";
 
 interface TilesetSelectorProps {
   value: TilesetName;
