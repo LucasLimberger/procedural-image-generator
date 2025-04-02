@@ -13,7 +13,7 @@ interface SwitchProps {
 export default function Switch({ name, value, isOn, onChange }: SwitchProps) {
   const id = useId();
   return (
-    <div>
+    <div className={styles.switchWrapper}>
       <label htmlFor={id} className={styles.label}>
         <input
           type="checkbox"

@@ -1,3 +1,7 @@
+.switchWrapper {
+  text-box: auto;
+}
+
 .label {
   vertical-align: middle;
   cursor: pointer;
