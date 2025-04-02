@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import WaveFunctionCollapseGrid from "@/scripts/WaveFunctionCollapseGrid";
+import WaveFunctionCollapseGrid from "@/tile-generator/WaveFunctionCollapseGrid";
 import { TILESETS, type TilesetName } from "@/data/tileData";
 
 export default function useTileGridGenerator() {

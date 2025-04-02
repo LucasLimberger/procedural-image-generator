@@ -1,4 +1,4 @@
-import { Tile } from "../scripts/WaveFunctionCollapseGrid";
+import { Tile } from "../tile-generator/WaveFunctionCollapseGrid";
 
 export { TILESETS, type TilesetName };
 
