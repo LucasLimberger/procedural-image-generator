@@ -1,10 +1,8 @@
 .languageSelector {
   position: relative;
-  height: 100%;
 }
 
 .button {
-  height: 100%;
   display: flex;
   padding: 0.25rem;
   column-gap: 0.375rem;

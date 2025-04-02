@@ -22,6 +22,7 @@
   width: max(100%, 30rem);
   height: max(100dvh, 30rem);
   color: var(--text-primary-clr);
+  scrollbar-color: var(--light-neutral-clr) var(--dark-neutral-clr);
 }
 
 body {
