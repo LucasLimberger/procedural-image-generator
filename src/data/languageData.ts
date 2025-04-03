@@ -10,6 +10,7 @@ const STRINGS = {
     gridWidthSettingLabel: "Largura",
     gridHeightSettingName: "Altura da grade",
     gridHeightSettingLabel: "Altura",
+    openImageDescription: "Abrir como uma imagem",
     tilesetChangeLabel: "Mudar conjunto de imagens",
   },
   en: {
@@ -23,6 +24,7 @@ const STRINGS = {
     gridWidthSettingLabel: "Width",
     gridHeightSettingName: "Grid height",
     gridHeightSettingLabel: "Height",
+    openImageDescription: "Open as an image",
     tilesetChangeLabel: "Change tileset",
   },
 } as const;

@@ -10,16 +10,24 @@ interface Cell {
 }
 
 interface GridProps {
+  gridRef: React.RefObject<HTMLDivElement>;
   width: number;
   height: number;
   cells: readonly Cell[];
   tilesetName: TilesetName;
 }
 
-export default function Grid({ width, height, cells, tilesetName }: GridProps) {
+export default function Grid({
+  gridRef,
+  width,
+  height,
+  cells,
+  tilesetName,
+}: GridProps) {
   return (
     <div className={styles.gridWrapper}>
       <div
+        ref={gridRef}
         className={styles.grid}
         style={{ "--rows": height, "--columns": width } as React.CSSProperties}
       >
@@ -50,6 +58,7 @@ const GridCell = memo(function GridCell({
     "--image-scale": tileName === null ? 0 : 1,
   } as React.CSSProperties;
 
+  // suppressHydrationWarning usado por causa do atraso aleatório na animação
   return (
     <div suppressHydrationWarning className={styles.gridCell} style={style}>
       <Image

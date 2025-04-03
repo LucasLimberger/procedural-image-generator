@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Content.module.css";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import useTileGridGenerator from "@/custom-hooks/useTileGridGenerator";
 import Controls from "./Controls";
 import Grid from "./Grid";
@@ -20,6 +20,8 @@ export default function Content() {
     }
   }, [state, restart, updateSettings]);
 
+  const gridElementRef = useRef<HTMLDivElement>(null);
+
   return (
     <main className={styles.main}>
       <Controls
@@ -27,6 +29,7 @@ export default function Content() {
         gridHeight={settings.gridHeight}
         skipAnimation={settings.skipAnimation}
         animationState={state}
+        gridElementRef={gridElementRef}
         onWidthChange={newWidth => updateSettings({ gridWidth: newWidth })}
         onHeightChange={newHeight => updateSettings({ gridHeight: newHeight })}
         onAnimationModeChange={skipAnimation =>
@@ -45,6 +48,7 @@ export default function Content() {
         </div>
         <div className={styles.gridWrapper}>
           <Grid
+            gridRef={gridElementRef}
             width={settings.gridWidth}
             height={settings.gridHeight}
             cells={cells}

@@ -1,0 +1,28 @@
+.button {
+  position: relative;
+  width: 2.75rem;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+  background-color: inherit;
+  border: var(--text-primary-clr) 0.25rem solid;
+  outline: transparent 0.125rem solid;
+  outline-offset: 1px;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  transition-property: background-color, border-color;
+  transition-duration: 200ms;
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--secondary-clr);
+  }
+  &:focus-visible {
+    outline-color: var(--focus-outline-clr);
+  }
+}

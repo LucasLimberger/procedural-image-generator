@@ -3,6 +3,7 @@
 import styles from "./Controls.module.css";
 import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
 import NumericInput from "./NumericInput";
+import OpenImageButton from "./OpenImageButton";
 import PlayButton from "./PlayButton";
 import Switch from "./Switch";
 
@@ -11,6 +12,7 @@ interface ControlsProps {
   gridHeight: number;
   skipAnimation: boolean;
   animationState: "done" | "running" | "paused";
+  gridElementRef: React.RefObject<HTMLElement>;
   onWidthChange: (newWidth: number) => void;
   onHeightChange: (newHeight: number) => void;
   onAnimationModeChange: (skipAnimation: boolean) => void;
@@ -22,6 +24,7 @@ export default function Controls({
   gridWidth,
   gridHeight,
   animationState,
+  gridElementRef,
   onAnimationModeChange,
   onWidthChange,
   onHeightChange,
@@ -56,6 +59,11 @@ export default function Controls({
         value={languageStrings.skipAnimationSettingName}
         isOn={skipAnimation}
         onChange={checked => onAnimationModeChange(checked)}
+      />
+      <OpenImageButton
+        gridElementRef={gridElementRef}
+        gridWidth={gridWidth}
+        gridHeight={gridHeight}
       />
     </div>
   );
