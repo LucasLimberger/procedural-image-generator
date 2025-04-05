@@ -1,23 +1,25 @@
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import { type SupportedLocale } from "@/data/languageData";
+import { SUPPORTED_LOCALES } from "@/data/languageData";
 
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700", "900"],
 });
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-  params: { lang: SupportedLocale };
+export function generateStaticParams() {
+  return SUPPORTED_LOCALES.map(locale => ({ lang: locale }));
 }
 
-export default function RootLayout({
-  children,
-  params: { lang },
-}: RootLayoutProps) {
+type Params = ReturnType<typeof generateStaticParams>[number];
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: Params;
+}
+
+export default function RootLayout({ children, params }: RootLayoutProps) {
   return (
-    <html lang={lang}>
+    <html lang={params.lang}>
       <body className={roboto.className}>{children}</body>
     </html>
   );
