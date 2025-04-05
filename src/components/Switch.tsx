@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./Switch.module.css";
 import { useId } from "react";
 

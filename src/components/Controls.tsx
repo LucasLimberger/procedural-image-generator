@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./Controls.module.css";
 import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
 import NumericInput from "./NumericInput";

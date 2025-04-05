@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./NumericInput.module.css";
 import { useId, useRef } from "react";
 

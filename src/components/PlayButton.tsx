@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./PlayButton.module.css";
 import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
 import Image from "next/image";
