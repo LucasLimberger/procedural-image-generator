@@ -1,7 +1,7 @@
 const STRINGS = {
   pt: {
     localeName: "Português",
-    title: "placeholder-pt-title",
+    title: "Gerador de Imagem por Função de Onda",
     playButtonDescription: "Iniciar",
     pauseButtonDescription: "Pausar",
     rerunButtonDescription: "Reiniciar",
@@ -15,7 +15,7 @@ const STRINGS = {
   },
   en: {
     localeName: "English",
-    title: "placeholder-en-title",
+    title: "Image Generator by Wave Function",
     playButtonDescription: "Start",
     pauseButtonDescription: "Pause",
     rerunButtonDescription: "Restart",

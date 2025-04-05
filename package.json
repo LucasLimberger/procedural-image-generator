@@ -1,7 +1,13 @@
 {
-  "name": "wave-function-collapse",
-  "version": "0.1.0",
+  "name": "@lucas-limberger/procedural-image-generator",
+  "version": "1.0.0",
   "private": true,
+  "author": "Lucas Limberger <lucaslimberger000@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasLimberger/procedural-image-generator.git"
+  },
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
