@@ -7,6 +7,21 @@ const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
 });
 
+export const metadata = {
+  icons: {
+    icon: [
+      {
+        url: "/light-theme-icon.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/dark-theme-icon.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+  },
+};
+
 export function generateStaticParams() {
   return SUPPORTED_LOCALES.map(locale => ({ lang: locale }));
 }
