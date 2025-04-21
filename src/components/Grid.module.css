@@ -16,7 +16,7 @@
 
 .gridCell {
   position: relative;
-  background-image: url("../../public/grid-cell-background.svg");
+  background-image: url("../../public/other/grid-cell-background.svg");
 
   @media (prefers-reduced-motion: no-preference) {
     opacity: 0;
