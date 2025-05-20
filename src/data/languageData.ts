@@ -27,6 +27,20 @@ const STRINGS = {
     openImageDescription: "Open as an image",
     tilesetChangeLabel: "Change tileset",
   },
+  es: {
+    localeName: "Español",
+    title: "Generador de Imágenes por Función de Onda",
+    playButtonDescription: "Comenzar",
+    pauseButtonDescription: "Pausar",
+    rerunButtonDescription: "Reanudar",
+    skipAnimationSettingName: "Saltar animación",
+    gridWidthSettingName: "La anchura de la cuadrícula",
+    gridWidthSettingLabel: "Anchura",
+    gridHeightSettingName: "La altura de la cuadrícula",
+    gridHeightSettingLabel: "Altura",
+    openImageDescription: "Abrir como una imagen",
+    tilesetChangeLabel: "Cambiar conjunto de imágenes",
+  },
 } as const;
 
 export default STRINGS;
