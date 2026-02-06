@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./OpenImageButton.module.css";
-import { useEffect, useState } from "react";
 import useLanguageStrings from "@/custom-hooks/useLanguageStrings";
 import Image from "next/image";
 
@@ -19,24 +18,23 @@ export default function OpenImageButton({
   gridHeight,
 }: OpenImageButtonProps) {
   const { openImageDescription } = useLanguageStrings();
-  const [offscreenCanvas, setOffscreenCanvas] = useState<OffscreenCanvas>();
-  useEffect(() => {
-    setOffscreenCanvas(new OffscreenCanvas(1, 1));
-  }, []);
 
   async function handleClick() {
-    if (offscreenCanvas === undefined) return;
-
+    const offscreenCanvas = new OffscreenCanvas(
+      gridWidth * TILE_SIZE,
+      gridHeight * TILE_SIZE,
+    );
     const canvasContext = offscreenCanvas.getContext("2d", {
       alpha: false,
       willReadFrequently: false,
     })!;
-    offscreenCanvas.width = gridWidth * TILE_SIZE;
-    offscreenCanvas.height = gridHeight * TILE_SIZE;
 
     const tileImages = [...gridElementRef.current!.querySelectorAll("img")];
+
+    // Aguarda até todas as imagens renderizarem
     await Promise.all(tileImages.map(img => img.decode()));
 
+    // Copia todas as imagens para o canvas
     for (let y = 0; y < gridHeight; y++) {
       for (let x = 0; x < gridWidth; x++) {
         canvasContext.drawImage(
