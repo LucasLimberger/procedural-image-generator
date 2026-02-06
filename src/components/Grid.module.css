@@ -23,7 +23,7 @@
     translate: 0 1rem;
     animation: fade-in 0.5s ease-out forwards;
     animation-delay: calc(var(--animation-delay-mult) * 300ms);
-    /* Atraso máximo de 300ms */
+    /* Atraso entre 0ms e 300ms */
   }
 }
 

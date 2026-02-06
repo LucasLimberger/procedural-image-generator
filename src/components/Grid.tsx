@@ -1,6 +1,6 @@
 import styles from "./Grid.module.css";
-import { memo } from "react";
-import { TilesetName } from "../data/tileData";
+import { memo, useState } from "react";
+import type { TilesetName } from "../data/tileData";
 import Image from "next/image";
 
 interface Cell {
@@ -53,8 +53,10 @@ const GridCell = memo(function GridCell({
   tileName,
 }: GridCellProps) {
   const tileSource = tileName === null ? "empty" : `${tilesetName}/${tileName}`;
+
+  const [randomNumber, _] = useState(Math.random);
   const style = {
-    "--animation-delay-mult": Math.random(),
+    "--animation-delay-mult": randomNumber, // Usado na animação de surgimento
     "--image-scale": tileName === null ? 0 : 1,
   } as React.CSSProperties;
 
