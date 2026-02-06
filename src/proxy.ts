@@ -9,7 +9,7 @@ export const config = {
   matcher: ["/:locale?"],
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const locale = request.nextUrl.pathname.split("/")[1];
   if (SUPPORTED_LANGUAGES.includes(locale as SupportedLanguage)) {
     return;

@@ -12,6 +12,6 @@ import {
 export default function useLanguageStrings() {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] as SupportedLanguage;
-  // O midleware garante que o idioma no URL será um dos suportados
+  // `proxy.js` garante que o idioma no URL será um dos suportados
   return getLanguageStringsFor(locale);
 }
