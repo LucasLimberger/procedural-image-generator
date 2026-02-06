@@ -1,5 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 
+/**
+ * Um hook para componentes do cliente que administra estado de visibilidade de
+ * um popup e define os eventos de teclado e mouse que o fecham.
+ */
 export default function usePopupVisibility(initialyVisible: boolean) {
   const popupRef = useRef<HTMLElement>(null);
   const [popupVisible, setPopupVisible] = useState(initialyVisible);

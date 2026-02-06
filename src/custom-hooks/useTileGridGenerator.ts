@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import WaveFunctionCollapseGrid from "@/tile-generator/WaveFunctionCollapseGrid";
 import { TILESETS, type TilesetName } from "@/data/tileData";
 
+/**
+ * Um hook para componentes do cliente que gera e administra uma grade de Tiles.
+ */
 export default function useTileGridGenerator() {
   const [stepsTaken, setStepsTaken] = useState(0);
   const [settings, setSettings] = useState({
@@ -15,8 +18,8 @@ export default function useTileGridGenerator() {
     new WaveFunctionCollapseGrid<string>(
       settings.gridWidth,
       settings.gridHeight,
-      TILESETS[settings.activeTileset]
-    )
+      TILESETS[settings.activeTileset],
+    ),
   );
 
   let state: "done" | "running" | "paused";
@@ -36,7 +39,7 @@ export default function useTileGridGenerator() {
     state = "done";
   }
 
-  // Animação
+  // Animação dos Tiles sendo computados passo a passo
   const gridSize = settings.gridWidth * settings.gridHeight;
   const intervalDuration = Math.min(500, 5000 / gridSize);
   useEffect(() => {
@@ -66,8 +69,8 @@ export default function useTileGridGenerator() {
             new WaveFunctionCollapseGrid(
               mergedSettings.gridWidth,
               mergedSettings.gridHeight,
-              TILESETS[mergedSettings.activeTileset]
-            )
+              TILESETS[mergedSettings.activeTileset],
+            ),
           );
         } else if (
           mergedSettings.gridWidth !== prev.gridWidth ||
@@ -79,7 +82,7 @@ export default function useTileGridGenerator() {
         return mergedSettings;
       });
     },
-    [wfcg]
+    [wfcg],
   );
 
   const cells = [...wfcg.iterCells()];

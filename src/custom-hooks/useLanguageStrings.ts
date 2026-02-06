@@ -7,11 +7,12 @@ import {
 } from "@/data/languageData";
 
 /**
- * @returns as strings do idioma atual
+ * Um hook para componentes do cliente que expõe as strings do idioma atual.
+ * @returns As strings do idioma atual.
  */
 export default function useLanguageStrings() {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] as SupportedLanguage;
-  // `proxy.js` garante que o idioma no URL será um dos suportados
+  // `proxy.ts` garante que o idioma no URL será um dos suportados
   return getLanguageStringsFor(locale);
 }
