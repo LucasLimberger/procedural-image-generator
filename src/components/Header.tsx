@@ -1,11 +1,11 @@
 "use client";
 
 import styles from "./Header.module.css";
-import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
+import useLanguageStrings from "@/custom-hooks/useLanguageStrings";
 import LanguageSelector from "./LanguageSelector";
 
 export default function Header() {
-  const { title } = useLocaleStrings();
+  const { title } = useLanguageStrings();
   return (
     <>
       <title>{title}</title>

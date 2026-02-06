@@ -1,9 +1,12 @@
 "use client";
 
 import styles from "./LanguageSelector.module.css";
-import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
+import useLanguageStrings from "@/custom-hooks/useLanguageStrings";
 import usePopupVisibility from "@/custom-hooks/usePopupVisibility";
-import STRINGS, { SUPPORTED_LOCALES } from "@/data/languageData";
+import {
+  getLanguageStringsFor,
+  SUPPORTED_LANGUAGES,
+} from "@/data/languageData";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,9 +17,9 @@ export default function LanguageSelector() {
     popupClassName += " " + styles.hidden;
   }
 
-  const { localeName: currentLocaleName } = useLocaleStrings();
-  const options = SUPPORTED_LOCALES.filter(
-    locale => STRINGS[locale].localeName !== currentLocaleName
+  const currentLanguage = useLanguageStrings().languageName;
+  const options = SUPPORTED_LANGUAGES.filter(
+    lang => getLanguageStringsFor(lang).languageName !== currentLanguage,
   );
 
   return (
@@ -26,17 +29,17 @@ export default function LanguageSelector() {
         onClick={() => setPopupVisible(prev => !prev)}
         aria-haspopup="menu"
       >
-        <div className={styles.buttonNameWrapper}>{currentLocaleName}</div>
+        <div className={styles.buttonNameWrapper}>{currentLanguage}</div>
         <div className={styles.imageWrapper}>
           <Image fill src="icons/language-icon.svg" alt="" />
         </div>
       </button>
       <menu className={popupClassName} ref={popupRef}>
-        {options.map(locale => (
-          <li key={locale} className={styles.localeOption}>
-            <Link className={styles.link} href={`/${locale}`}>
+        {options.map(lang => (
+          <li key={lang} className={styles.localeOption}>
+            <Link className={styles.link} href={`/${lang}`}>
               <span className={styles.optionName}>
-                {STRINGS[locale].localeName}
+                {getLanguageStringsFor(lang).languageName}
               </span>
             </Link>
           </li>

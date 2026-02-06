@@ -2,7 +2,7 @@
 
 import styles from "./OpenImageButton.module.css";
 import { useEffect, useState } from "react";
-import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
+import useLanguageStrings from "@/custom-hooks/useLanguageStrings";
 import Image from "next/image";
 
 interface OpenImageButtonProps {
@@ -18,7 +18,7 @@ export default function OpenImageButton({
   gridWidth,
   gridHeight,
 }: OpenImageButtonProps) {
-  const { openImageDescription } = useLocaleStrings();
+  const { openImageDescription } = useLanguageStrings();
   const [offscreenCanvas, setOffscreenCanvas] = useState<OffscreenCanvas>();
   useEffect(() => {
     setOffscreenCanvas(new OffscreenCanvas(1, 1));
@@ -44,7 +44,7 @@ export default function OpenImageButton({
           x * TILE_SIZE,
           y * TILE_SIZE,
           TILE_SIZE,
-          TILE_SIZE
+          TILE_SIZE,
         );
       }
     }

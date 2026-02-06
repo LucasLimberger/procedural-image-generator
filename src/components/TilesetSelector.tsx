@@ -2,7 +2,7 @@
 
 import styles from "./TilesetSelector.module.css";
 import { memo } from "react";
-import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
+import useLanguageStrings from "@/custom-hooks/useLanguageStrings";
 import { TILESETS, type TilesetName } from "@/data/tileData";
 import Image from "next/image";
 
@@ -41,7 +41,7 @@ const TilesetOption = memo(function TilesetOption({
   isSelected,
   onSelect,
 }: TilesetOptionProps) {
-  const { tilesetChangeLabel } = useLocaleStrings();
+  const { tilesetChangeLabel } = useLanguageStrings();
 
   let buttonClassName = styles.tilesetOptionButton;
   if (isSelected) {

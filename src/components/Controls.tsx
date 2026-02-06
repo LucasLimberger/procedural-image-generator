@@ -1,5 +1,5 @@
 import styles from "./Controls.module.css";
-import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
+import useLanguageStrings from "@/custom-hooks/useLanguageStrings";
 import NumericInput from "./NumericInput";
 import OpenImageButton from "./OpenImageButton";
 import PlayButton from "./PlayButton";
@@ -28,7 +28,7 @@ export default function Controls({
   onHeightChange,
   onPlayPauseRestart,
 }: ControlsProps) {
-  const languageStrings = useLocaleStrings();
+  const languageStrings = useLanguageStrings();
 
   return (
     <div className={styles.controls}>

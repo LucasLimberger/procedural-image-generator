@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import { SUPPORTED_LOCALES } from "@/data/languageData";
+import { SUPPORTED_LANGUAGES } from "@/data/languageData";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -23,7 +23,7 @@ export const metadata = {
 };
 
 export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map(locale => ({ lang: locale }));
+  return SUPPORTED_LANGUAGES.map(language => ({ lang: language }));
 }
 
 type Params = ReturnType<typeof generateStaticParams>[number];

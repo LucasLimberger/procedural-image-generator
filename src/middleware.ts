@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
 import {
-  DEFAULT_LOCALE,
-  SUPPORTED_LOCALES,
-  type SupportedLocale,
+  DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
+  type SupportedLanguage,
 } from "./data/languageData";
 
 export const config = {
@@ -11,13 +11,17 @@ export const config = {
 
 export function middleware(request: NextRequest) {
   const locale = request.nextUrl.pathname.split("/")[1];
-  if (SUPPORTED_LOCALES.includes(locale as SupportedLocale)) {
+  if (SUPPORTED_LANGUAGES.includes(locale as SupportedLanguage)) {
     return;
   }
 
   const languageHeader = request.headers.get("accept-language") ?? "*";
   const proposals = parseLanguageHeader(languageHeader);
-  const newLocale = matchLocale(proposals, SUPPORTED_LOCALES, DEFAULT_LOCALE);
+  const newLocale = matchLocale(
+    proposals,
+    SUPPORTED_LANGUAGES,
+    DEFAULT_LANGUAGE,
+  );
   request.nextUrl.pathname = "/" + newLocale;
   return NextResponse.redirect(request.nextUrl);
 }
@@ -40,7 +44,7 @@ function parseLanguageHeader(languageHeader: string) {
 function matchLocale<T extends string>(
   proposedLocales: readonly string[],
   supportedLocales: readonly T[],
-  defaultLocale: T
+  defaultLocale: T,
 ) {
   for (const proposal of proposedLocales) {
     if (proposal === "*") return defaultLocale;

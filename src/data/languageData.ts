@@ -1,6 +1,6 @@
-const STRINGS = {
+const APP_STRINGS_BY_LANGUAGE = {
   pt: {
-    localeName: "Português",
+    languageName: "Português",
     title: "Gerador de Imagem por Função de Onda",
     playButtonDescription: "Iniciar",
     pauseButtonDescription: "Pausar",
@@ -14,7 +14,7 @@ const STRINGS = {
     tilesetChangeLabel: "Mudar conjunto de imagens",
   },
   en: {
-    localeName: "English",
+    languageName: "English",
     title: "Image Generator by Wave Function",
     playButtonDescription: "Start",
     pauseButtonDescription: "Pause",
@@ -28,7 +28,7 @@ const STRINGS = {
     tilesetChangeLabel: "Change tileset",
   },
   es: {
-    localeName: "Español",
+    languageName: "Español",
     title: "Generador de Imágenes por Función de Onda",
     playButtonDescription: "Comenzar",
     pauseButtonDescription: "Pausar",
@@ -43,10 +43,13 @@ const STRINGS = {
   },
 } as const;
 
-export default STRINGS;
+export type SupportedLanguage = keyof typeof APP_STRINGS_BY_LANGUAGE;
 
-export type SupportedLocale = keyof typeof STRINGS;
-export const SUPPORTED_LOCALES = Object.keys(
-  STRINGS
-) as readonly SupportedLocale[];
-export const DEFAULT_LOCALE: SupportedLocale = "pt";
+export const DEFAULT_LANGUAGE: SupportedLanguage = "pt";
+export const SUPPORTED_LANGUAGES = Object.keys(
+  APP_STRINGS_BY_LANGUAGE,
+) as readonly SupportedLanguage[];
+
+export function getLanguageStringsFor(language: SupportedLanguage) {
+  return APP_STRINGS_BY_LANGUAGE[language];
+}

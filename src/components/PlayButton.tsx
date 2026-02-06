@@ -1,5 +1,5 @@
 import styles from "./PlayButton.module.css";
-import useLocaleStrings from "@/custom-hooks/useLocaleStrings";
+import useLanguageStrings from "@/custom-hooks/useLanguageStrings";
 import Image from "next/image";
 
 interface PlayButtonProps {
@@ -11,7 +11,7 @@ export default function PlayButton({
   animationState,
   onPlayPauseRestart,
 }: PlayButtonProps) {
-  const languageStrings = useLocaleStrings();
+  const languageStrings = useLanguageStrings();
 
   let playButtonSrc: string;
   let playButtonDescription: string;
